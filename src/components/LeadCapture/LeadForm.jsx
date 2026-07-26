@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Sparkles } from 'lucide-react';
-import { supabase } from '../../../supabaseClient';
+import { supabase } from '../../supabaseClient';
 
 export default function LeadForm({ localId, localName }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
