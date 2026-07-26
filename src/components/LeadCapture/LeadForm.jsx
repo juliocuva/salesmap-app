@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Sparkles } from 'lucide-react';
+import { supabase } from '../../../supabaseClient';
 
 export default function LeadForm({ localId, localName }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,18 +12,39 @@ export default function LeadForm({ localId, localName }) {
     idea: ''
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      
-      const text = `Hola, me interesa el ${localName || 'local'}.%0A%0A*Nombre:* ${formData.name}%0A*Contacto:* ${formData.contact}%0A*Idea de negocio:* ${formData.idea || 'No especificada'}`;
-      const waUrl = `https://wa.me/573117369009?text=${text}`;
-      window.open(waUrl, '_blank');
-    }, 500);
+    try {
+      // 1. Guardar el lead en Supabase de forma silenciosa
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          { 
+            local_id: localId,
+            local_name: localName,
+            name: formData.name,
+            contact: formData.contact,
+            business_idea: formData.idea,
+            created_at: new Date().toISOString()
+          }
+        ]);
+        
+      if (error) {
+        console.error("Error guardando el lead en base de datos:", error);
+      }
+    } catch (err) {
+      console.error("Error de conexión con Supabase:", err);
+    }
+    
+    // 2. Abrir WhatsApp independientemente de si falló o no la BD para no perder la venta
+    setIsSubmitting(false);
+    setSubmitted(true);
+    
+    const text = `Hola, me interesa el ${localName || 'local'}.%0A%0A*Nombre:* ${formData.name}%0A*Contacto:* ${formData.contact}%0A*Idea de negocio:* ${formData.idea || 'No especificada'}%0A%0A_Generado vía SalesMap - Ref: ${localId}_`;
+    const waUrl = `https://wa.me/573117369009?text=${text}`;
+    window.open(waUrl, '_blank');
   };
 
   if (submitted) {
