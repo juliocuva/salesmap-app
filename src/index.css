@@ -1,0 +1,431 @@
+:root {
+  --bg-color: #0f172a;
+  --panel-bg: rgba(30, 41, 59, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow: hidden; /* Prevent scrolling, app is full screen */
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Flat UI utility classes (New Concept) */
+.flat-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  color: #1e293b;
+}
+
+.flat-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  color: #334155;
+}
+
+.flat-card:hover {
+  background: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.widget-green {
+  background: #e2f4cd;
+  border-radius: 16px;
+  color: #3b5a22;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.widget-green-bar {
+  background: #b2d58a;
+  height: 6px;
+  border-radius: 3px;
+}
+.widget-green-bar-fill {
+  background: #739d42;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.widget-blue {
+  background: #d2f0f4;
+  border-radius: 16px;
+  color: #23545b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+.widget-blue-bar {
+  background: #a3d9e0;
+  height: 6px;
+  border-radius: 3px;
+}
+.widget-blue-bar-fill {
+  background: #47939e;
+  height: 100%;
+  border-radius: 3px;
+}
+
+.widget-yellow {
+  background: #fef3c7;
+  border-radius: 12px;
+  color: #92400e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.widget-purple {
+  background: #ede9fe;
+  border-radius: 12px;
+  color: #5b21b6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.widget-pink {
+  background: #fce7f3;
+  border-radius: 12px;
+  color: #9d174d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Text overrides for flat UI */
+.text-dark-primary { color: #0f172a !important; }
+.text-dark-secondary { color: #64748b !important; }
+.border-flat { border-color: #e2e8f0 !important; }
+
+
+/* Typography */
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+.text-secondary { color: var(--text-secondary); }
+.text-accent { color: var(--accent-color); }
+.text-success { color: var(--success-color); }
+
+/* Layout utilities */
+.flex { display: flex; }
+.flex-col { display: flex; flex-direction: column; }
+.grid { display: grid; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.mt-2 { margin-top: 0.5rem; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+
+/* Buttons */
+.btn {
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.btn-primary {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: #059669;
+  border-color: #059669;
+}
+
+/* Forms */
+.input {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+select.input option {
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+.input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes slideFromSidebar {
+  0% { transform: translateX(600px) scale(0.95); opacity: 0; }
+  100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+.animate-slide-sidebar {
+  animation: slideFromSidebar 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Specific App Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.map-container {
+  flex: 1;
+  position: relative;
+  background-color: #1e293b;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 400px;
+  height: calc(100vh - 2rem);
+  margin: 1rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+/* React Zoom Pan Pinch Overrides - Viewport Mask */
+.map-transform-wrapper {
+  position: absolute !important;
+  left: 120px !important;
+  right: 120px !important;
+  top: 20px !important;
+  bottom: 20px !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  background-color: transparent;
+  cursor: grab;
+}
+
+.map-transform-wrapper:active {
+  cursor: grabbing;
+}
+
+.map-transform-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG Map Styles */
+.local-polygon {
+  fill: rgba(34, 197, 94, 0.4); /* Verde para disponible */
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: all 0.3s ease;
+  pointer-events: all; /* Make polygons clickable */
+  cursor: pointer;
+}
+
+.local-polygon:hover {
+  fill: rgba(59, 130, 246, 0.6); /* Azul clarito al hacer hover */
+  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
+  stroke-width: 6;
+  stroke-linejoin: round;
+}
+
+.local-polygon.sold {
+  fill: rgba(239, 68, 68, 0.4); /* Rojo para vendido */
+  cursor: not-allowed;
+}
+
+.local-polygon.sold:hover {
+  fill: rgba(239, 68, 68, 0.7);
+  filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.8));
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.local-polygon.selected {
+  fill: rgba(59, 130, 246, 0.85); /* Azul más intenso para seleccionado */
+  stroke: white;
+  stroke-width: 6;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+}
+
+/* Tabs */
+.tabs-container {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  color: var(--accent-color);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* Categories Grid */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+.category-card.active {
+  border-color: var(--accent-color);
+  background: rgba(59, 130, 246, 0.1);
+}
