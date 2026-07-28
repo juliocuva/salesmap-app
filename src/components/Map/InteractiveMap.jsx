@@ -32,7 +32,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       return ['/accesorios1.png'];
     }
     if (visionMode === 'restaurante') {
-      return ['/restaurante1.png', '/restaurante2.png', '/restaurante3.png'];
+      return ['/restaurante1.png', '/restaurante2.png', '/restaurante3.png', '/restaurante4.png', '/restaurante5.png'];
     }
     if (visionMode === 'drogueria') {
       return ['/drogueria1.png', '/drogueria2.png'];
@@ -60,10 +60,10 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   return (
     <div className="map-container" style={{ width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#f4f7f6' }}>
       <TransformWrapper
-        initialScale={1.5}
+        initialScale={1.2}
         initialPositionX={0}
-        initialPositionY={-250}
-        minScale={1.5}
+        initialPositionY={-70}
+        minScale={1.2}
         maxScale={4}
         limitToBounds={true}
         wheel={{ step: 0.03, smoothStep: 0.005 }}
