@@ -21,7 +21,7 @@ export const mockLocals = [
   { id: "local_30a", name: "Local 30A", area: 24.87, price: 522270000, status: "disponible", delivery: "2027-2" },
   { id: "local_29a", name: "Local 29A", area: 83.42, price: 1751820000, status: "disponible", delivery: "2027-2" },
   
-  { id: "local_sotano_1", name: "Local A (Sótano 1)", area: 467.62, price: null, status: "disponible", delivery: "sotano", floor: "sotano_1" },
+  { id: "local_sotano_1", name: "Local A (Sótano 1)", area: 600, price: null, status: "disponible", delivery: "sotano", floor: "sotano_1" },
   { id: "local_sotano_2", name: "Local B (Sótano 2)", area: 889.12, price: null, status: "disponible", delivery: "sotano", floor: "sotano_2" },
   { id: "local_sotano_3", name: "Local D (Sótano 3)", area: 490.39, price: null, status: "disponible", delivery: "sotano", floor: "sotano_3" },
 
