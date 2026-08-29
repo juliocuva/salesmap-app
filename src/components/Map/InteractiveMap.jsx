@@ -45,6 +45,20 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
 
   const images = getImages();
 
+  const [currentFloor, setCurrentFloor] = useState('piso_1');
+  const [filterType, setFilterType] = useState('todos'); // 'todos', 'venta', 'alquiler'
+  const [filterDelivery, setFilterDelivery] = useState('todos'); // 'todos', '2026', '2027-1', '2027-2'
+
+  // Definir imágenes de fondo por piso
+  const getBackgroundImage = () => {
+    switch(currentFloor) {
+      case 'sotano_1': return '/plano_sotano_1.jpg';
+      case 'sotano_2': return '/plano_sotano_2.jpg';
+      case 'sotano_3': return '/plano_sotano_3.jpg';
+      default: return '/plano.jpg';
+    }
+  };
+
   const nextImage = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -58,12 +72,116 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   };
 
   return (
-    <div className="map-container" style={{ width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#f4f7f6' }}>
+    <div className="map-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#f4f7f6' }}>
+      {/* Botones de Filtro (Top Center) */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: '32px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '12px',
+          zIndex: 9999
+        }}
+      >
+        <div style={{ display: 'flex', gap: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '6px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
+          <button 
+            onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
+            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+          >
+            Todos
+          </button>
+          <button 
+            onClick={() => { setFilterType('venta'); setFilterDelivery('todos'); }} 
+            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+          >
+            En Venta
+          </button>
+          <button 
+            onClick={() => { setFilterType('alquiler'); setFilterDelivery('todos'); }} 
+            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+          >
+            En Alquiler
+          </button>
+        </div>
+        
+        {filterType === 'venta' && (
+          <div className="animate-fade-in" style={{ display: 'flex', gap: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '6px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
+            <button 
+              onClick={() => setFilterDelivery('todos')} 
+              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#64748b', transition: 'all 0.2s ease' }}
+            >
+              Cualquier Entrega
+            </button>
+            <button 
+              onClick={() => setFilterDelivery('2026')} 
+              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2026' ? '#23AED8' : 'transparent', color: filterDelivery === '2026' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            >
+              2026
+            </button>
+            <button 
+              onClick={() => setFilterDelivery('2027-1')} 
+              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2027-1' ? '#CD25D6' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            >
+              2027-1
+            </button>
+            <button 
+              onClick={() => setFilterDelivery('2027-2')} 
+              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2027-2' ? '#D3AA26' : 'transparent', color: filterDelivery === '2027-2' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            >
+              2027-2
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Controles de Piso */}
+      <div 
+        style={{ 
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '10px',
+          position: 'absolute', 
+          right: selectedLocal ? '420px' : '150px', 
+          top: '40px', 
+          zIndex: 9999, // Asegurar que quede por encima de todo
+          transition: 'right 0.3s ease'
+        }}
+      >
+        {[
+          { id: 'piso_1', label: 'Primer Piso' },
+          { id: 'sotano_1', label: 'Sótano 1' },
+          { id: 'sotano_2', label: 'Sótano 2' },
+          { id: 'sotano_3', label: 'Sótano 3' }
+        ].map(floor => (
+          <button 
+            key={floor.id}
+            onClick={() => setCurrentFloor(floor.id)} 
+            style={{ 
+              padding: '12px 20px', 
+              background: currentFloor === floor.id ? '#3b82f6' : '#ffffff', 
+              color: currentFloor === floor.id ? '#ffffff' : '#334155', 
+              border: '2px solid #e2e8f0', 
+              borderRadius: '8px', 
+              cursor: 'pointer', 
+              fontWeight: 'bold',
+              transition: 'all 0.3s ease', 
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)' 
+            }}
+          >
+            {floor.label}
+          </button>
+        ))}
+      </div>
+
       <TransformWrapper
-        initialScale={1.2}
+        initialScale={1.1}
         initialPositionX={0}
-        initialPositionY={-70}
-        minScale={1.2}
+        initialPositionY={0}
+        minScale={1.1}
         maxScale={4}
         limitToBounds={true}
         wheel={{ step: 0.03, smoothStep: 0.005 }}
@@ -118,16 +236,28 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                 style={{ position: 'relative', display: 'inline-block' }}
                 onClick={handleMapClick}
               >
+                {/* Fallback color when image is loading or missing */}
+                <div style={{ backgroundColor: '#ccc', minWidth: '100vw', minHeight: '100vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}></div>
                 <img 
-                  src="/plano.jpg" 
-                  alt="Plano" 
-                  style={{ maxWidth: '100vw', maxHeight: '100vh', display: 'block', pointerEvents: 'none' }} 
+                  src={getBackgroundImage()} 
+                  alt={`Plano ${currentFloor}`} 
+                  style={{ maxWidth: '100vw', maxHeight: '100vh', display: 'block', pointerEvents: 'none', minWidth: '800px', minHeight: '600px' }} 
+                  onError={(e) => {
+                    // Si no existe la imagen del sótano, mostrar un placeholder o mantener el tamaño para que no colapse
+                    e.target.style.opacity = '0';
+                  }}
+                  onLoad={(e) => {
+                    e.target.style.opacity = '1';
+                  }}
                 />
                 <MapSvgOverlay 
                   selectedLocal={selectedLocal} 
                   onSelectLocal={onSelectLocal} 
                   localsData={mockLocals} 
                   zoomToElement={zoomToElement}
+                  currentFloor={currentFloor}
+                  filterType={filterType}
+                  filterDelivery={filterDelivery}
                 />
               </div>
             </TransformComponent>

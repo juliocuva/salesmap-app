@@ -117,6 +117,10 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
+.map-container button {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
 /* Text overrides for flat UI */
 .text-dark-primary { color: #0f172a !important; }
 .text-dark-secondary { color: #64748b !important; }
@@ -334,7 +338,6 @@ select.input option {
 
 /* SVG Map Styles */
 .local-polygon {
-  fill: rgba(34, 197, 94, 0.4); /* Verde para disponible */
   stroke: rgba(255, 255, 255, 0.8);
   stroke-width: 4;
   stroke-linejoin: round;
@@ -344,11 +347,40 @@ select.input option {
   cursor: pointer;
 }
 
+/* Colores por fase de entrega */
+.local-polygon.delivery-2026 {
+  fill: rgba(56, 189, 248, 0.5); /* Azul claro (como en tu imagen) */
+}
+.local-polygon.delivery-2027-1 {
+  fill: rgba(217, 70, 239, 0.5); /* Magenta/Morado (como en tu imagen) */
+}
+.local-polygon.delivery-2027-2 {
+  fill: rgba(234, 179, 8, 0.5); /* Amarillo/Dorado (como en tu imagen) */
+}
+.local-polygon.delivery-sotano {
+  fill: rgba(156, 163, 175, 0.5); /* Gris */
+}
+
+/* Fallback para disponibles sin fecha */
+.local-polygon.available:not([class*="delivery-"]) {
+  fill: rgba(59, 130, 246, 0.4); /* Azul */
+}
+
+/* Locales para alquilar */
+.local-polygon.rent {
+  fill: rgba(249, 115, 22, 0.5); /* Naranja */
+}
+
 .local-polygon:hover {
   fill: rgba(59, 130, 246, 0.6); /* Azul clarito al hacer hover */
   filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.8));
   stroke-width: 6;
   stroke-linejoin: round;
+}
+
+.local-polygon.faded {
+  opacity: 0.15;
+  pointer-events: none; /* No clickable when faded out */
 }
 
 .local-polygon.sold {
