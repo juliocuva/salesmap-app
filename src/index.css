@@ -358,7 +358,14 @@ select.input option {
   fill: rgba(234, 179, 8, 0.5); /* Amarillo/Dorado (como en tu imagen) */
 }
 .local-polygon.delivery-sotano {
-  fill: rgba(156, 163, 175, 0.5); /* Gris */
+  fill: transparent; /* No tint, solo interactivo */
+}
+
+.local-polygon.delivery-sotano:hover,
+.local-polygon.delivery-sotano.selected {
+  fill: transparent;
+  filter: none;
+  stroke: none;
 }
 
 /* Fallback para disponibles sin fecha */
