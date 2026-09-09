@@ -303,8 +303,9 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
             src={images[currentImageIndex]} 
             alt="Render"
             style={{
-              width: '70vh',
               height: '70vh',
+              width: visionMode.startsWith('camera') ? 'calc(70vh * 16 / 9)' : '70vh',
+              maxWidth: '90vw',
               objectFit: 'cover',
               borderRadius: '5px',
               outline: '5px solid white'
