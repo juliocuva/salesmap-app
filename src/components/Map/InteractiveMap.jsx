@@ -12,6 +12,18 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     setCurrentImageIndex(0);
   }, [visionMode]);
 
+  // Cerrar el modo de visión con la tecla ESC
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && visionMode) {
+        onCloseVision();
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [visionMode, onCloseVision]);
+
   const handleMapClick = (e) => {
     // Si se hizo clic en un hotspot, ignorar
     if (e.target.classList.contains('local-hotspot')) return;
