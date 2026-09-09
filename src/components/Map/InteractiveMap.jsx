@@ -58,6 +58,9 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     if (visionMode === 'camera2') {
       return ['/Img_7520.png'];
     }
+    if (visionMode === 'camera3') {
+      return ['/img46_bobadilla.jpg'];
+    }
     return ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop'];
   };
 
