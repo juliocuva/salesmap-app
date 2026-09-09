@@ -4,7 +4,7 @@ import MapSvgOverlay from './MapSvgOverlay';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Plus, Minus, Search, Home, ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMode, onCloseVision }) {
+export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMode, onCloseVision, onSelectVision }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Reiniciar el índice de la imagen cuando cambia el modo de visión o se cierra
@@ -39,6 +39,12 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     }
     if (visionMode === 'petshop') {
       return ['/petshop1.png', '/petshop2.png'];
+    }
+    if (visionMode === 'camera1') {
+      return ['/Img_7523_.png'];
+    }
+    if (visionMode === 'camera2') {
+      return ['/Img_7520.png'];
     }
     return ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop'];
   };
@@ -124,7 +130,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
             </button>
             <button 
               onClick={() => setFilterDelivery('2027-1')} 
-              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2027-1' ? '#CD25D6' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2027-1' ? '#22c55e' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
             >
               2027-1
             </button>
@@ -258,6 +264,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                   currentFloor={currentFloor}
                   filterType={filterType}
                   filterDelivery={filterDelivery}
+                  onSelectVision={onSelectVision}
                 />
               </div>
             </TransformComponent>

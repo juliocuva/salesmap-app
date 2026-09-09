@@ -18,6 +18,7 @@ function App() {
           onSelectLocal={setSelectedLocal} 
           visionMode={visionMode}
           onCloseVision={() => setVisionMode(null)}
+          onSelectVision={(mode) => setVisionMode(mode)}
         />
       </div>
       

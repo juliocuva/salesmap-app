@@ -39,7 +39,7 @@ const areas = [
   { id: 'local_sotano_3', d: "M0,0 L2822.08,0 L2822.08,1774.98 L0,1774.98 Z" }
 ];
 
-export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData, zoomToElement, currentFloor = 'piso_1', filterType = 'todos', filterDelivery = 'todos' }) {
+export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData, zoomToElement, currentFloor = 'piso_1', filterType = 'todos', filterDelivery = 'todos', onSelectVision }) {
   return (
     <svg 
       viewBox="0 0 2822.08 1774.98" 
@@ -110,6 +110,52 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
           </g>
         );
       })}
+      {/* Cámaras interactivas */}
+      {currentFloor === 'piso_1' && (
+        <>
+          <g 
+            id="camera_1"
+            className="pointer-events-auto cursor-pointer transition-all duration-300"
+            style={{ transformOrigin: '1205px 908px', pointerEvents: 'auto', cursor: 'pointer' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              if (onSelectVision) onSelectVision('camera1');
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.5)'; e.currentTarget.style.fill = '#e11d48'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.fill = '#1e293b'; }}
+          >
+            {/* Área extendida invisible para que sea muy fácil darle clic */}
+            <circle cx="1205" cy="908" r="40" fill="transparent" style={{ pointerEvents: 'all' }} />
+            <path 
+              fill="#1e293b" 
+              style={{ transition: 'fill 0.3s', pointerEvents: 'auto', cursor: 'pointer' }}
+              d="M1211.8,908.3c2.3,0,4.2-0.8,5.8-2.4c1.6-1.6,2.4-3.5,2.4-5.8s-0.8-4.2-2.4-5.8c-1.6-1.6-3.5-2.4-5.8-2.4c-2.3,0-4.2,0.8-5.8,2.4c-1.6,1.6-2.4,3.5-2.4,5.8s0.8,4.2,2.4,5.8C1207.6,907.5,1209.5,908.3,1211.8,908.3z M1211.8,904.6c-1.3,0-2.4-0.4-3.2-1.3c-0.9-0.9-1.3-2-1.3-3.2s0.4-2.4,1.3-3.2c0.9-0.9,2-1.3,3.2-1.3s2.4,0.4,3.2,1.3c0.9,0.9,1.3,2,1.3,3.2s-0.4,2.4-1.3,3.2C1214.2,904.2,1213.1,904.6,1211.8,904.6z M1197.2,914.7c-1,0-1.9-0.4-2.6-1.1c-0.7-0.7-1.1-1.6-1.1-2.6v-21.9c0-1,0.4-1.9,1.1-2.6c0.7-0.7,1.6-1.1,2.6-1.1h5.8l3.4-3.7h11l3.4,3.7h5.8c1,0,1.9,0.4,2.6,1.1c0.7,0.7,1.1,1.6,1.1,2.6V911c0,1-0.4,1.9-1.1,2.6c-0.7,0.7-1.6,1.1-2.6,1.1H1197.2z M1197.2,911h29.2v-21.9h-7.4l-3.3-3.7h-7.8l-3.3,3.7h-7.4V911z" 
+            />
+          </g>
+
+          <g 
+            id="camera_2"
+            className="pointer-events-auto cursor-pointer transition-all duration-300"
+            style={{ transformOrigin: '856px 983px', pointerEvents: 'auto', cursor: 'pointer' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              if (onSelectVision) onSelectVision('camera2');
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.5)'; e.currentTarget.style.fill = '#e11d48'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.fill = '#1e293b'; }}
+          >
+            {/* Área extendida invisible para que sea muy fácil darle clic */}
+            <circle cx="856" cy="983" r="40" fill="transparent" style={{ pointerEvents: 'all' }} />
+            <path 
+              fill="#1e293b" 
+              style={{ transition: 'fill 0.3s', pointerEvents: 'auto', cursor: 'pointer' }}
+              d="M863.6,983.3c2.3,0,4.2-0.8,5.8-2.4c1.6-1.6,2.4-3.5,2.4-5.8s-0.8-4.2-2.4-5.8c-1.6-1.6-3.5-2.4-5.8-2.4s-4.2,0.8-5.8,2.4c-1.6,1.6-2.4,3.5-2.4,5.8s0.8,4.2,2.4,5.8C859.4,982.5,861.3,983.3,863.6,983.3z M863.6,979.6c-1.3,0-2.4-0.4-3.2-1.3s-1.3-2-1.3-3.2s0.4-2.4,1.3-3.2s2-1.3,3.2-1.3s2.4,0.4,3.2,1.3s1.3,2,1.3,3.2s-0.4,2.4-1.3,3.2S864.9,979.6,863.6,979.6z M849,989.7c-1,0-1.9-0.4-2.6-1.1c-0.7-0.7-1.1-1.6-1.1-2.6v-21.9c0-1,0.4-1.9,1.1-2.6c0.7-0.7,1.6-1.1,2.6-1.1h5.8l3.4-3.7h11l3.4,3.7h5.8c1,0,1.9,0.4,2.6,1.1c0.7,0.7,1.1,1.6,1.1,2.6V986c0,1-0.4,1.9-1.1,2.6c-0.7,0.7-1.6,1.1-2.6,1.1H849z M849,986h29.2v-21.9h-7.4l-3.3-3.7h-7.8l-3.3,3.7H849V986z" 
+            />
+          </g>
+        </>
+      )}
     </svg>
   );
 }
