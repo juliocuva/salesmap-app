@@ -76,7 +76,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       case 'sotano_1': return '/14 de agosto_Planta Sotano 01  N -3.65 mts.webp';
       case 'sotano_2': return '/14 de agosto_Planta Sotano 02  N -7.65 mts.webp';
       case 'sotano_3': return '/14 de agosto_Planta Sotano 03  N -11.30 mts.webp';
-      default: return '/14 de agosto_Planta de primer piso  N 0.00 mts.webp';
+      default: return '/plano.jpg';
     }
   };
 
