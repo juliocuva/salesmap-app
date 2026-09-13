@@ -1,0 +1,1 @@
+const fs=require('fs');const content=fs.readFileSync('public/plano de ventas-01.svg', 'utf8');const regex = /id="((?:local|l)_x5F_[^"]+)"[^>]*d="([^"]+)"/g; let match; let out = 'const areas = [\n'; while ((match = regex.exec(content)) !== null) { out +=   { id: '', d:  + '' + match[2] + '' +  },\n; } out += '];'; console.log(out);

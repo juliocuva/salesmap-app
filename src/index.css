@@ -400,6 +400,15 @@ select.input option {
   pointer-events: none;
 }
 
+.local-polygon.upcoming {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.local-polygon.upcoming:hover {
+  opacity: 0;
+}
+
 .local-polygon.selected {
   fill: rgba(59, 130, 246, 0.85); /* Azul más intenso para seleccionado */
   stroke: white;
