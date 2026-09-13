@@ -36,7 +36,8 @@ const areas = [
   // Sótanos (cubren toda la imagen para ser clickeables en cualquier parte)
   { id: 'local_sotano_1', d: "M0,0 L2822.08,0 L2822.08,1774.98 L0,1774.98 Z" },
   { id: 'local_sotano_2', d: "M0,0 L2822.08,0 L2822.08,1774.98 L0,1774.98 Z" },
-  { id: 'local_sotano_3', d: "M0,0 L2822.08,0 L2822.08,1774.98 L0,1774.98 Z" }
+  { id: 'local_sotano_3', d: "M0,0 L2822.08,0 L2822.08,1774.98 L0,1774.98 Z" },
+  { id: 'local_27', d: "M1545.5,427.5l100.3,65c2.4,1.6,3,4.9,1.3,7.2l-33.7,45.2c-1.6,2.2-4.7,2.7-6.9,1.1l-45.1-32.4c-0.2-0.1-0.3-0.2-0.5-0.3l-48.8-27.2c-2.4-1.3-3.3-4.4-1.9-6.8l28.2-50.1C1539.8,426.7,1543.1,425.9,1545.5,427.5z" }
 ];
 
 export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData, zoomToElement, currentFloor = 'piso_1', filterType = 'todos', filterDelivery = 'todos', onSelectVision }) {
