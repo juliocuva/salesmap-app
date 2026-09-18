@@ -93,7 +93,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   };
 
   return (
-    <div className="map-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#f4f7f6' }}>
+    <div className="map-container" style={{ position: 'relative', width: '100vw', height: 'calc(100vh - 100px)', overflow: 'hidden', backgroundColor: '#f4f7f6' }}>
       {/* Botones de Filtro (Top Center) */}
       <div 
         style={{
@@ -199,12 +199,13 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       </div>
 
       <TransformWrapper
-        initialScale={1.1}
+        initialScale={1}
         initialPositionX={0}
         initialPositionY={0}
-        minScale={1.1}
+        minScale={1}
         maxScale={4}
         limitToBounds={true}
+        centerOnInit={true}
         wheel={{ step: 0.03, smoothStep: 0.005 }}
       >
         {({ zoomIn, zoomOut, resetTransform, zoomToElement }) => (
