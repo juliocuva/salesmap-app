@@ -10,10 +10,10 @@ const categoryIcons = {
 };
 
 const categoryColors = {
-  "Cafetería": { bg: '#fef3c7', text: '#92400e', border: '#fde68a' }, // yellow
-  "Heladería": { bg: '#e2f4cd', text: '#3b5a22', border: '#b2d58a' }, // green
-  "Petshop": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' }, // blue
-  "Droguería": { bg: '#fce7f3', text: '#9d174d', border: '#fbcfe8' } // pink
+  "Cafetería": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
+  "Heladería": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
+  "Petshop": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
+  "Droguería": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' }
 };
 
 export default function CommercialExplorerTab() {
@@ -50,11 +50,11 @@ export default function CommercialExplorerTab() {
                 minHeight: '110px'
               }}
             >
-              <div className="flex items-center gap-2 mb-2 text-sm font-semibold opacity-90">
-                <Icon size={16} strokeWidth={isActive ? 2.5 : 2} /> {cat}s
+              <div className="flex items-center gap-2 mb-1 font-semibold opacity-90" style={{ fontSize: '12px' }}>
+                <Icon size={14} strokeWidth={isActive ? 2.5 : 2} /> {cat}s
               </div>
-              <div className="text-xl font-bold mb-3 text-center w-full">{count} {count === 1 ? 'local' : 'locales'}</div>
-              <div className="flex items-center justify-between text-xs mb-1 opacity-80 w-full">
+              <div className="font-bold mb-2 text-center w-full" style={{ fontSize: '16px' }}>{count} {count === 1 ? 'local' : 'locales'}</div>
+              <div className="flex items-center justify-between mb-1 opacity-80 w-full" style={{ fontSize: '11px' }}>
                 <span>Radio 1.5km</span>
                 <span>Ver lista</span>
               </div>
@@ -66,24 +66,24 @@ export default function CommercialExplorerTab() {
         })}
       </div>
 
-      <div className="flat-card p-2 flex flex-col gap-2 max-h-[280px] overflow-y-auto">
+      <div className="flat-card p-1 flex flex-col max-h-[280px] overflow-y-auto">
         {filteredCommerce.length === 0 ? (
           <p className="text-center text-sm text-dark-secondary p-4">No se encontraron comercios en esta categoría.</p>
         ) : (
           filteredCommerce.map((item) => (
-            <div key={item.id} className="p-3 border-b border-flat last:border-0 hover:bg-[#f8fafc] transition-colors rounded-lg">
+            <div key={item.id} className="p-2 border-b border-flat last:border-0 hover:bg-[#f8fafc] transition-colors rounded-lg">
               <div className="flex justify-between items-start">
-                <div>
-                  <h4 className="font-semibold flex items-center gap-2 text-dark-primary">
-                    <Store size={14} style={{ color: '#3b82f6' }} /> {item.name}
+                <div className="flex flex-col gap-1">
+                  <h4 className="font-semibold flex items-center gap-2 text-dark-primary leading-none" style={{ fontSize: '12px' }}>
+                    <Store size={12} style={{ color: '#47939e' }} /> {item.name}
                   </h4>
-                  <p className="text-xs text-dark-secondary mt-1">Tipo: {item.type}</p>
+                  <p className="text-dark-secondary leading-none" style={{ fontSize: '11px', marginTop: '2px' }}>Tipo: {item.type}</p>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs font-medium px-2 py-1 rounded-full" style={{ background: '#e0e7ff', color: '#4f46e5' }}>
+                <div className="text-right flex flex-col items-end gap-1">
+                  <span className="font-medium px-2 py-0.5 rounded-full leading-none" style={{ background: '#d2f0f4', color: '#23545b', fontSize: '11px' }}>
                     {item.category}
                   </span>
-                  <p className="text-xs font-semibold mt-1 opacity-70" style={{ color: '#334155' }}>a {item.distance}m</p>
+                  <p className="font-semibold opacity-70 leading-none" style={{ color: '#334155', fontSize: '11px' }}>a {item.distance}m</p>
                 </div>
               </div>
             </div>

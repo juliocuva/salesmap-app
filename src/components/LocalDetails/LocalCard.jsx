@@ -15,9 +15,9 @@ export default function LocalCard({ local, onClose, onShowVision }) {
       {/* Header */}
       <div className="p-4 border-b border-flat flex justify-between items-center">
         <div>
-          <h2 className="text-xl font-bold text-dark-primary">{local.name}</h2>
-          <p className="text-sm text-dark-secondary">
-            {local.area} m² • <span className={local.status === 'disponible' ? 'text-success' : 'text-warning'}>
+          <h2 className="text-lg font-bold text-dark-primary">{local.name}</h2>
+          <p className="text-xs text-dark-secondary">
+            {local.area} m² • <span style={{ color: '#47939e', fontWeight: '600' }}>
               {local.status.charAt(0).toUpperCase() + local.status.slice(1)}
             </span>
           </p>
@@ -74,32 +74,32 @@ export default function LocalCard({ local, onClose, onShowVision }) {
       </div>
 
       {/* Content Area */}
-      <div className="p-4 pb-8 overflow-y-auto" style={{ flex: 1, color: '#334155' }}>
+      <div className="p-4 pb-8 overflow-y-auto" style={{ flex: 1, minHeight: 0, color: '#334155' }}>
         {activeTab === 'basic' && (
           <div className="animate-fade-in flex-col gap-3 flex">
             {/* Widgets Container */}
             <div className="grid grid-cols-2 gap-3">
-              {/* Green Widget - Area */}
-              <div className="widget-green p-4 flex flex-col justify-between" style={{ minHeight: '110px' }}>
-                <div className="flex items-center gap-2 mb-2 text-sm font-semibold opacity-90">
-                  <Building size={16}/> Área Total
+              {/* Blue Widget - Area */}
+              <div className="widget-blue p-3 flex flex-col justify-between" style={{ minHeight: '90px' }}>
+                <div className="flex items-center gap-2 mb-1 text-xs font-semibold opacity-90">
+                  <Building size={14}/> Área Total
                 </div>
-                <div className="text-xl font-bold mb-3">{local.area} m²</div>
+                <div className="text-lg font-bold mb-2">{local.area} m²</div>
                 <div className="flex items-center justify-between text-xs mb-1 opacity-80">
                   <span>Espacio útil</span>
                   <span>100%</span>
                 </div>
-                <div className="widget-green-bar">
-                  <div className="widget-green-bar-fill" style={{ width: '100%' }}></div>
+                <div className="widget-blue-bar">
+                  <div className="widget-blue-bar-fill" style={{ width: '100%' }}></div>
                 </div>
               </div>
 
               {/* Blue Widget - Habitantes */}
-              <div className="widget-blue p-4 flex flex-col justify-between" style={{ minHeight: '110px' }}>
-                <div className="flex items-center gap-2 mb-2 text-sm font-semibold opacity-90">
-                  <Activity size={16}/> Habitantes
+              <div className="widget-blue p-3 flex flex-col justify-between" style={{ minHeight: '90px' }}>
+                <div className="flex items-center gap-2 mb-1 text-xs font-semibold opacity-90">
+                  <Activity size={14}/> Habitantes
                 </div>
-                <div className="text-xl font-bold mb-3">18.000</div>
+                <div className="text-lg font-bold mb-2">18.000</div>
                 <div className="flex items-center justify-between text-xs mb-1 opacity-80">
                   <span>Radio 1.5km</span>
                   <span>+12%</span>
@@ -111,31 +111,31 @@ export default function LocalCard({ local, onClose, onShowVision }) {
             </div>
 
             {/* Specifications Details */}
-            <div className="widget-yellow p-4">
-              <h3 className="font-semibold mb-3 text-sm opacity-90 flex items-center gap-2">
-                <Store size={16} /> Detalles Físicos
+            <div className="widget-blue p-3">
+              <h3 className="font-semibold mb-2 text-xs opacity-90 flex items-center gap-2">
+                <Store size={14} /> Detalles Físicos
               </h3>
-              <div className="flex flex-col gap-3">
-                <div className="flex justify-between items-center border-b border-[rgba(0,0,0,0.05)] pb-2">
-                  <div className="flex items-center gap-2 opacity-80 text-sm">
-                    <Maximize2 size={14} />
+              <div className="flex flex-col gap-2">
+                <div className="flex justify-between items-center border-b border-[rgba(0,0,0,0.05)] pb-1">
+                  <div className="flex items-center gap-2 opacity-80 text-xs">
+                    <Maximize2 size={12} />
                     <span>Frente comercial</span>
                   </div>
-                  <span className="font-bold">{local.front} m</span>
+                  <span className="font-bold text-sm">{local.front} m</span>
                 </div>
-                <div className="flex justify-between items-center border-b border-[rgba(0,0,0,0.05)] pb-2">
-                  <div className="flex items-center gap-2 opacity-80 text-sm">
-                    <MapPin size={14} />
+                <div className="flex justify-between items-center border-b border-[rgba(0,0,0,0.05)] pb-1">
+                  <div className="flex items-center gap-2 opacity-80 text-xs">
+                    <MapPin size={12} />
                     <span>Ubicación</span>
                   </div>
-                  <span className="font-bold">{local.corner ? 'Esquina' : 'Pasillo'}</span>
+                  <span className="font-bold text-sm">{local.corner ? 'Esquina' : 'Pasillo'}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2 opacity-80 text-sm">
-                    <Sun size={14} />
+                  <div className="flex items-center gap-2 opacity-80 text-xs">
+                    <Sun size={12} />
                     <span>Terraza / Expansión</span>
                   </div>
-                  <span className="font-bold">{local.terrace ? 'Sí' : 'No'}</span>
+                  <span className="font-bold text-sm">{local.terrace ? 'Sí' : 'No'}</span>
                 </div>
               </div>
             </div>

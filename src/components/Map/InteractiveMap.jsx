@@ -76,7 +76,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       case 'sotano_1': return '/14 de agosto_Planta Sotano 01  N -3.65 mts.webp';
       case 'sotano_2': return '/14 de agosto_Planta Sotano 02  N -7.65 mts.webp';
       case 'sotano_3': return '/14 de agosto_Planta Sotano 03  N -11.30 mts.webp';
-      default: return '/plano.jpg';
+      default: return '/plano.png';
     }
   };
 
@@ -199,14 +199,14 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       </div>
 
       <TransformWrapper
-        initialScale={1}
+        initialScale={1.25}
         initialPositionX={0}
         initialPositionY={0}
-        minScale={1}
+        minScale={1.25}
         maxScale={4}
         limitToBounds={true}
-        centerOnInit={true}
-        wheel={{ step: 0.03, smoothStep: 0.005 }}
+        wheel={{ step: 0.005, smoothStep: 0.001 }}
+        onTransformed={(ref) => console.log("Punto de inicio actual - Scale:", ref.state.scale, " X:", ref.state.positionX, " Y:", ref.state.positionY)}
       >
         {({ zoomIn, zoomOut, resetTransform, zoomToElement }) => (
           <>

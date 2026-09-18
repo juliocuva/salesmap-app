@@ -12,12 +12,12 @@ const iconMap = {
 };
 
 const categoryColors = {
-  "cafeteria": { bg: '#fef3c7', text: '#92400e', border: '#fde68a' },
-  "heladeria": { bg: '#e2f4cd', text: '#3b5a22', border: '#b2d58a' },
+  "cafeteria": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
+  "heladeria": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
   "petshop": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
-  "drogueria": { bg: '#fce7f3', text: '#9d174d', border: '#fbcfe8' },
-  "restaurante": { bg: '#ffedd5', text: '#9a3412', border: '#fdba74' },
-  "joyeria": { bg: '#ede9fe', text: '#5b21b6', border: '#c4b5fd' }
+  "drogueria": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
+  "restaurante": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' },
+  "joyeria": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' }
 };
 
 export default function CompatibilityTab({ onShowVision }) {
@@ -26,9 +26,9 @@ export default function CompatibilityTab({ onShowVision }) {
   const result = selectedType ? compatibilityRules[selectedType] : null;
 
   return (
-    <div className="animate-fade-in flex-col gap-3 flex">
+    <div className="animate-fade-in flex-col gap-2 flex">
       {/* Category Grid */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-2">
         {categories.map(cat => {
           const Icon = iconMap[cat.icon] || Target;
           const isActive = selectedType === cat.id;
@@ -41,41 +41,41 @@ export default function CompatibilityTab({ onShowVision }) {
                 setSelectedType(cat.id);
                 onShowVision(cat.id);
               }}
-              className="flex items-center justify-center p-2 transition-all"
+              className="flex items-center justify-center p-1.5 transition-all"
               style={{
                 background: colors.bg,
                 color: colors.text,
-                borderRadius: '12px',
+                borderRadius: '8px',
                 border: 'none',
                 outline: 'none',
                 boxShadow: isActive ? '0 4px 12px rgba(0,0,0,0.15)' : 'none',
                 transform: isActive ? 'translateY(-2px)' : 'none',
-                minHeight: '48px'
+                minHeight: '36px'
               }}
             >
-              <div className="flex items-center justify-center flex-row gap-2 text-sm font-semibold opacity-90 w-full">
-                <Icon size={18} strokeWidth={isActive ? 2.5 : 2} />
-                <span className="text-[12px] font-bold">{cat.label}</span>
+              <div className="flex items-center justify-center flex-row gap-2 opacity-90 w-full">
+                <Icon size={14} strokeWidth={isActive ? 2.5 : 2} />
+                <span className="font-bold" style={{ fontSize: '11px' }}>{cat.label}</span>
               </div>
             </button>
           );
         })}
       </div>
 
-      <div style={{ marginTop: '40px' }}>
+      <div style={{ marginTop: '12px' }}>
         {result ? (
           <div className="animate-fade-in flex flex-col gap-3 w-full">
             
             {/* Card 1: Probabilidad */}
             <div 
-              className="p-4 flex justify-between items-center shadow-sm"
-              style={{ background: '#d2f0f4', borderRadius: '16px' }}
+              className="p-3 flex justify-between items-center shadow-sm"
+              style={{ background: '#d2f0f4', borderRadius: '12px' }}
             >
-              <span className="font-semibold text-sm opacity-90" style={{ color: '#23545b' }}>Probabilidad de Éxito Estimada:</span>
+              <span className="font-semibold opacity-90" style={{ color: '#23545b', fontSize: '12px' }}>Probabilidad de Éxito Estimada:</span>
               <div 
                 className="font-bold tracking-tight"
                 style={{ 
-                  fontSize: '36px', 
+                  fontSize: '24px', 
                   lineHeight: '1',
                   color: '#23545b'
                 }}
@@ -85,16 +85,16 @@ export default function CompatibilityTab({ onShowVision }) {
             </div>
             
             {/* Card 2: Variables y Explicación */}
-            <div className="bg-[#f8fafc] p-4 border border-[#e2e8f0] shadow-sm w-full text-left" style={{ borderRadius: '16px' }}>
-              <p className="text-xs text-dark-secondary w-full text-left mb-4 leading-relaxed">
+            <div className="bg-[#f8fafc] p-3 border border-[#e2e8f0] shadow-sm w-full text-left" style={{ borderRadius: '12px' }}>
+              <p className="text-dark-secondary w-full text-left mb-3 leading-relaxed" style={{ fontSize: '12px' }}>
                 Existe una {result.score > 85 ? 'alta' : 'moderada'} posibilidad de excelente aceptación por parte del público en este sector.
               </p>
               
-              <h4 className="text-sm font-bold mb-3 opacity-90 text-dark-primary text-left">Variables a favor:</h4>
+              <h4 className="font-bold mb-3 opacity-90 text-dark-primary text-left" style={{ fontSize: '13px' }}>Variables a favor:</h4>
               <ul className="space-y-3 w-full" style={{ paddingLeft: 0, marginLeft: 0, listStyle: 'none' }}>
                 {result.reasons.map((reason, idx) => (
-                  <li key={idx} className="text-xs flex items-start justify-start gap-2 opacity-90 text-dark-secondary leading-tight text-left m-0 p-0">
-                    <CheckCircle2 size={16} className="text-success mt-[1px] flex-shrink-0" strokeWidth={2.5} />
+                  <li key={idx} className="flex items-start justify-start gap-2 opacity-90 text-dark-secondary leading-relaxed text-left m-0 p-0" style={{ fontSize: '12px' }}>
+                    <CheckCircle2 size={14} className="mt-[3px] flex-shrink-0" style={{ color: '#47939e' }} strokeWidth={2.5} />
                     <span className="text-left flex-1">{reason}</span>
                   </li>
                 ))}
@@ -103,8 +103,8 @@ export default function CompatibilityTab({ onShowVision }) {
             
           </div>
         ) : (
-          <div className="text-center text-sm p-4 opacity-70 flex flex-col items-center gap-3">
-            <Target size={32} className="text-dark-secondary opacity-50" />
+          <div className="text-center p-4 opacity-70 flex flex-col items-center gap-2" style={{ fontSize: '12px' }}>
+            <Target size={24} className="text-dark-secondary opacity-50" />
             <p>Selecciona una categoría arriba para iniciar la simulación del modelo de negocio.</p>
           </div>
         )}
