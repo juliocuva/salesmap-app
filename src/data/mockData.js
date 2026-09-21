@@ -33,8 +33,8 @@ export const mockLocals = [
 
   // Locales para alquilar
   { id: "local_9a", name: "Local 9A", area: 0, price: null, status: "alquiler" },
-  { id: "local_10", name: "Local 10", area: 0, price: null, status: "alquiler" },
-  { id: "local_11", name: "Local 11", area: 0, price: null, status: "alquiler" },
+  { id: "local_10", name: "Local 10", area: 34.93, price: null, status: "vendido" },
+  { id: "local_11", name: "Local 11", area: 41.32, price: null, status: "vendido" },
   { id: "local_47c", name: "Local 47C", area: 18.83, status: "alquiler", front: 3.2, corner: false, terrace: false },
   { id: "local_2", name: "Local 2", area: 52.4, status: "alquiler", front: 7, corner: false, terrace: true },
 
