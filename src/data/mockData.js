@@ -36,12 +36,12 @@ export const mockLocals = [
 
   // Locales iniciales (ahora en entrega 2026)
   { id: "local_2a", name: "Local 2A", area: 5, price: 105000000, status: "vendido", delivery: "2026", front: 2, corner: false, terrace: false },
-  { id: "local_47a", name: "Local 47A", area: 18.7, price: 392700000, status: "vendido", delivery: "2026", front: 3.2, corner: false, terrace: false },
-  { id: "local_5", name: "Local 5", area: 50.08, price: 1051680000, status: "vendido", delivery: "2026", front: 8, corner: false, terrace: true },
+  { id: "local_47a", name: "Local 47A", area: 18.7, price: 392700000, status: "alquiler", delivery: "2026", front: 3.2, corner: false, terrace: false },
+  { id: "local_5", name: "Local 5", area: 50.08, price: 1051680000, status: "alquiler", delivery: "2026", front: 8, corner: false, terrace: true },
   { id: "local_13", name: "Local 13", area: 40, price: 840000000, status: "vendido", delivery: "2026", front: 6.2, corner: false, terrace: false },
-  { id: "local_14a", name: "Local 14A", area: 27.81, price: 584010000, status: "vendido", delivery: "2026", front: 5.4, corner: true, terrace: false },
-  { id: "local_7", name: "Local 7", area: 43.32, price: 909720000, status: "vendido", delivery: "2026", front: 7, corner: false, terrace: false },
-  { id: "local_47b", name: "Local 47B", area: 17.84, price: 374640000, status: "vendido", delivery: "2026", front: 3.2, corner: false, terrace: false },
+  { id: "local_14a", name: "Local 14A", area: 27.81, price: 584010000, status: "alquiler", delivery: "2026", front: 5.4, corner: true, terrace: false },
+  { id: "local_7", name: "Local 7", area: 43.32, price: 909720000, status: "alquiler", delivery: "2026", front: 7, corner: false, terrace: false },
+  { id: "local_47b", name: "Local 47B", area: 17.84, price: 374640000, status: "alquiler", delivery: "2026", front: 3.2, corner: false, terrace: false },
   { id: "local_47d", name: "Local 47D", area: 18.39, price: 386190000, status: "vendido", delivery: "2026", front: 3.2, corner: false, terrace: false }
 ];
 
