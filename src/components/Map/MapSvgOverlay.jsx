@@ -203,6 +203,52 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
               d="M1050.5,226.6c2.3,0,4.2-0.8,5.8-2.4c1.6-1.6,2.4-3.5,2.4-5.8s-0.8-4.2-2.4-5.8s-3.5-2.4-5.8-2.4s-4.2,0.8-5.8,2.4c-1.6,1.6-2.4,3.5-2.4,5.8s0.8,4.2,2.4,5.8C1046.3,225.8,1048.2,226.6,1050.5,226.6z M1050.5,222.9c-1.3,0-2.4-0.4-3.2-1.3c-0.9-0.9-1.3-2-1.3-3.2s0.4-2.4,1.3-3.2c0.9-0.9,2-1.3,3.2-1.3s2.4,0.4,3.2,1.3c0.9,0.9,1.3,2,1.3,3.2s-0.4,2.4-1.3,3.2C1052.9,222.5,1051.8,222.9,1050.5,222.9z M1035.9,233c-1,0-1.9-0.4-2.6-1.1c-0.7-0.7-1.1-1.6-1.1-2.6v-21.9c0-1,0.4-1.9,1.1-2.6c0.7-0.7,1.6-1.1,2.6-1.1h5.8l3.4-3.7h11l3.4,3.7h5.8c1,0,1.9,0.4,2.6,1.1c0.7,0.7,1.1,1.6,1.1,2.6v21.9c0,1-0.4,1.9-1.1,2.6c-0.7,0.7-1.6,1.1-2.6,1.1L1035.9,233L1035.9,233z M1035.9,229.3h29.2v-21.9h-7.4l-3.3-3.7h-7.8l-3.3,3.7h-7.4L1035.9,229.3L1035.9,229.3z" 
             />
           </g>
+
+          <g 
+            id="camera_4"
+            className="pointer-events-auto cursor-pointer transition-all duration-300"
+            style={{ transformOrigin: '910px 630px', pointerEvents: 'auto', cursor: 'pointer' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              if (onSelectVision) onSelectVision('camera4');
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.5)'; e.currentTarget.style.fill = '#e11d48'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.fill = '#1e293b'; }}
+          >
+            {/* Área extendida invisible para que sea muy fácil darle clic */}
+            <circle cx="910" cy="630" r="40" fill="transparent" style={{ pointerEvents: 'all' }} />
+            <g style={{ transform: 'translate(-140px, 404px)', pointerEvents: 'auto', cursor: 'pointer' }}>
+              <path 
+                fill="#1e293b" 
+                style={{ transition: 'fill 0.3s' }}
+                d="M1050.5,226.6c2.3,0,4.2-0.8,5.8-2.4c1.6-1.6,2.4-3.5,2.4-5.8s-0.8-4.2-2.4-5.8s-3.5-2.4-5.8-2.4s-4.2,0.8-5.8,2.4c-1.6,1.6-2.4,3.5-2.4,5.8s0.8,4.2,2.4,5.8C1046.3,225.8,1048.2,226.6,1050.5,226.6z M1050.5,222.9c-1.3,0-2.4-0.4-3.2-1.3c-0.9-0.9-1.3-2-1.3-3.2s0.4-2.4,1.3-3.2c0.9-0.9,2-1.3,3.2-1.3s2.4,0.4,3.2,1.3c0.9,0.9,1.3,2,1.3,3.2s-0.4,2.4-1.3,3.2C1052.9,222.5,1051.8,222.9,1050.5,222.9z M1035.9,233c-1,0-1.9-0.4-2.6-1.1c-0.7-0.7-1.1-1.6-1.1-2.6v-21.9c0-1,0.4-1.9,1.1-2.6c0.7-0.7,1.6-1.1,2.6-1.1h5.8l3.4-3.7h11l3.4,3.7h5.8c1,0,1.9,0.4,2.6,1.1c0.7,0.7,1.1,1.6,1.1,2.6v21.9c0,1-0.4,1.9-1.1,2.6c-0.7,0.7-1.6,1.1-2.6,1.1L1035.9,233L1035.9,233z M1035.9,229.3h29.2v-21.9h-7.4l-3.3-3.7h-7.8l-3.3,3.7h-7.4L1035.9,229.3L1035.9,229.3z" 
+              />
+            </g>
+          </g>
+
+          <g 
+            id="camera_5"
+            className="pointer-events-auto cursor-pointer transition-all duration-300"
+            style={{ transformOrigin: '860px 670px', pointerEvents: 'auto', cursor: 'pointer' }}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              if (onSelectVision) onSelectVision('camera5');
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'scale(1.5)'; e.currentTarget.style.fill = '#e11d48'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.fill = '#1e293b'; }}
+          >
+            {/* Área extendida invisible para que sea muy fácil darle clic */}
+            <circle cx="860" cy="670" r="40" fill="transparent" style={{ pointerEvents: 'all' }} />
+            <g style={{ transform: 'translate(-190px, 444px)', pointerEvents: 'auto', cursor: 'pointer' }}>
+              <path 
+                fill="#1e293b" 
+                style={{ transition: 'fill 0.3s' }}
+                d="M1050.5,226.6c2.3,0,4.2-0.8,5.8-2.4c1.6-1.6,2.4-3.5,2.4-5.8s-0.8-4.2-2.4-5.8s-3.5-2.4-5.8-2.4s-4.2,0.8-5.8,2.4c-1.6,1.6-2.4,3.5-2.4,5.8s0.8,4.2,2.4,5.8C1046.3,225.8,1048.2,226.6,1050.5,226.6z M1050.5,222.9c-1.3,0-2.4-0.4-3.2-1.3c-0.9-0.9-1.3-2-1.3-3.2s0.4-2.4,1.3-3.2c0.9-0.9,2-1.3,3.2-1.3s2.4,0.4,3.2,1.3c0.9,0.9,1.3,2,1.3,3.2s-0.4,2.4-1.3,3.2C1052.9,222.5,1051.8,222.9,1050.5,222.9z M1035.9,233c-1,0-1.9-0.4-2.6-1.1c-0.7-0.7-1.1-1.6-1.1-2.6v-21.9c0-1,0.4-1.9,1.1-2.6c0.7-0.7,1.6-1.1,2.6-1.1h5.8l3.4-3.7h11l3.4,3.7h5.8c1,0,1.9,0.4,2.6,1.1c0.7,0.7,1.1,1.6,1.1,2.6v21.9c0,1-0.4,1.9-1.1,2.6c-0.7,0.7-1.6,1.1-2.6,1.1L1035.9,233L1035.9,233z M1035.9,229.3h29.2v-21.9h-7.4l-3.3-3.7h-7.8l-3.3,3.7h-7.4L1035.9,229.3L1035.9,229.3z" 
+              />
+            </g>
+          </g>
         </>
       )}
     </svg>

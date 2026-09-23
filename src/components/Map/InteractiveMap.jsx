@@ -61,6 +61,12 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     if (visionMode === 'camera3') {
       return ['/img46_bobadilla.jpg'];
     }
+    if (visionMode === 'camera4') {
+      return ['/Img 7524 Pasillos local 14b.png'];
+    }
+    if (visionMode === 'camera5') {
+      return ['/Img 7525 Pasillos local 14b.png'];
+    }
     return ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop'];
   };
 
