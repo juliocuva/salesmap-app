@@ -207,7 +207,7 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
           <g 
             id="camera_4"
             className="pointer-events-auto cursor-pointer transition-all duration-300"
-            style={{ transformOrigin: '950px 570px', pointerEvents: 'auto', cursor: 'pointer' }}
+            style={{ transformOrigin: '950px 555px', pointerEvents: 'auto', cursor: 'pointer' }}
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
@@ -217,8 +217,8 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
             onMouseOut={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.fill = '#1e293b'; }}
           >
             {/* Área extendida invisible para que sea muy fácil darle clic */}
-            <circle cx="950" cy="570" r="40" fill="transparent" style={{ pointerEvents: 'all' }} />
-            <g style={{ transform: 'translate(-100px, 344px)', pointerEvents: 'auto', cursor: 'pointer' }}>
+            <circle cx="950" cy="555" r="40" fill="transparent" style={{ pointerEvents: 'all' }} />
+            <g style={{ transform: 'translate(-100px, 329px)', pointerEvents: 'auto', cursor: 'pointer' }}>
               <path 
                 fill="#1e293b" 
                 style={{ transition: 'fill 0.3s' }}
