@@ -51,7 +51,7 @@ export default function LandingPage() {
               </p>
               
               <div className="flex flex-row items-center gap-4">
-                <a href="https://wa.me/573000000000?text=Hola,%20quiero%20agendar%20una%20demostración%20de%20Bemap.pro" target="_blank" rel="noopener noreferrer" className="inline-flex bg-[#ECCE76] text-[#184943] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white transition-all items-center gap-2 shadow-md">
+                <a href="https://wa.me/573013970002?text=Hola,%20quiero%20agendar%20una%20demostración%20de%20Bemap.pro" target="_blank" rel="noopener noreferrer" className="inline-flex bg-[#ECCE76] text-[#184943] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white transition-all items-center gap-2 shadow-md">
                   Agendar Demostración <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link to="/map" className="inline-flex bg-white/10 border border-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-all items-center gap-2 backdrop-blur-md">
@@ -243,7 +243,7 @@ export default function LandingPage() {
           <p className="text-sm md:text-base text-white/70 mb-8 font-light leading-relaxed">
             Permítanos agendar una sesión interactiva de 15 minutos para mostrarle en vivo cómo funciona la plataforma y cómo aplicarla a su proyecto esta misma semana.
           </p>
-          <a href="https://wa.me/573000000000?text=Hola,%20quiero%20agendar%20una%20demostración%20de%20Bemap.pro" target="_blank" rel="noopener noreferrer" className="bg-[#ECCE76] text-[#184943] px-8 py-4 rounded-xl font-medium hover:bg-white transition-colors inline-flex items-center gap-2 shadow-lg w-fit mx-auto">
+          <a href="https://wa.me/573013970002?text=Hola,%20quiero%20agendar%20una%20demostración%20de%20Bemap.pro" target="_blank" rel="noopener noreferrer" className="bg-[#ECCE76] text-[#184943] px-8 py-4 rounded-xl font-medium hover:bg-white transition-colors inline-flex items-center gap-2 shadow-lg w-fit mx-auto">
             Agendar Demo de 15 Minutos <ArrowRight className="w-5 h-5" />
           </a>
           <p className="mt-8 text-xs text-white/40 font-light">
