@@ -9,9 +9,8 @@ export default function LandingPage() {
       {/* Sticky Navbar */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-[#0d2a26]/95 backdrop-blur-md border-b border-white/10">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 md:px-12 py-4">
-          <div className="text-2xl font-bold tracking-tight text-[#FAFDFF] flex items-center gap-2">
-            <span className="w-8 h-8 rounded-lg bg-[#ECCE76] text-[#184943] flex items-center justify-center text-sm">B</span>
-            bemap<span className="text-[#ECCE76]">.pro</span>
+          <div className="flex items-center">
+            <img src="/logo-bemap.svg" alt="Bemap.pro Logo" className="h-8 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#problema" className="text-sm font-medium hover:text-[#ECCE76] transition-colors text-white">Problema</a>
