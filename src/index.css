@@ -509,3 +509,14 @@ select.input option {
           drop-shadow(-2px -2px 0px rgba(255,255,255,0.4))
           drop-shadow(0 10px 15px rgba(0,0,0,0.15));
 }
+
+.bemap-cut-inner {
+  clip-path: polygon(
+    20px 0, 
+    100% 0, 
+    100% calc(100% - 20px), 
+    calc(100% - 20px) 100%, 
+    0 100%, 
+    0 20px
+  );
+}
