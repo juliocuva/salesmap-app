@@ -203,7 +203,7 @@ export default function LandingPage() {
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-[900px] mx-auto items-stretch">
           {/* Card 1 */}
-          <div className="bg-white p-8 md:p-10 bemap-cut drop-shadow-md flex flex-col md:-translate-y-2">
+          <div className="bg-white p-8 md:p-10 bemap-cut bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col md:-translate-y-2">
             <h3 className="text-xl md:text-2xl font-medium mb-1 text-[#184943]">Implementación Integral</h3>
             <p className="text-[#ECCE76] text-[10px] font-medium uppercase tracking-widest mb-6">Setup Único</p>
             <p className="text-[#184943]/70 text-sm leading-relaxed mb-8 flex-grow">
