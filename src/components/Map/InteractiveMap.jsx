@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { mockLocals } from '../../data/mockData';
 import MapSvgOverlay from './MapSvgOverlay';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Plus, Minus, Search, Home, ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMode, onCloseVision, onSelectVision }) {
+export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMode, onCloseVision, onSelectVision, projectData }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Reiniciar el índice de la imagen cuando cambia el modo de visión o se cierra
@@ -30,44 +29,12 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   };
 
   // Definir las imágenes según el modo
-  const getImages = () => {
-    if (visionMode === 'cafeteria') {
-      return ['/cafeteria1.png', '/cafeteria2.png'];
+    const getImages = () => {
+    if (!projectData || !projectData.config.visionModes) return [];
+    if (visionMode && projectData.config.visionModes[visionMode]) {
+      return projectData.config.visionModes[visionMode];
     }
-    if (visionMode === 'heladeria') {
-      return ['/heladeria1.png', '/heladeria2.png'];
-    }
-    if (visionMode === 'joyeria') {
-      return ['/joyeria1.png', '/joyeria2.png'];
-    }
-    if (visionMode === 'accesorios') {
-      return ['/accesorios1.png'];
-    }
-    if (visionMode === 'restaurante') {
-      return ['/restaurante1.png', '/restaurante2.png', '/restaurante3.png', '/restaurante4.png', '/restaurante5.png'];
-    }
-    if (visionMode === 'drogueria') {
-      return ['/drogueria1.png', '/drogueria2.png'];
-    }
-    if (visionMode === 'petshop') {
-      return ['/petshop1.png', '/petshop2.png'];
-    }
-    if (visionMode === 'camera1') {
-      return ['/Img_7523_.png'];
-    }
-    if (visionMode === 'camera2') {
-      return ['/Img_7520.png'];
-    }
-    if (visionMode === 'camera3') {
-      return ['/img46_bobadilla.jpg'];
-    }
-    if (visionMode === 'camera4') {
-      return ['/Img 7525 Pasillos local 14b.png'];
-    }
-    if (visionMode === 'camera5') {
-      return ['/Img 7524 Pasillos local 14b.png'];
-    }
-    return ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop'];
+    return [projectData?.config?.defaultImage || 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop'];
   };
 
   const images = getImages();
@@ -77,13 +44,10 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   const [filterDelivery, setFilterDelivery] = useState('todos'); // 'todos', '2026', '2027-1', '2027-2'
 
   // Definir imágenes de fondo por piso
-  const getBackgroundImage = () => {
-    switch(currentFloor) {
-      case 'sotano_1': return '/14 de agosto_Planta Sotano 01  N -3.65 mts.webp';
-      case 'sotano_2': return '/14 de agosto_Planta Sotano 02  N -7.65 mts.webp';
-      case 'sotano_3': return '/14 de agosto_Planta Sotano 03  N -11.30 mts.webp';
-      default: return '/plano.png';
-    }
+    const getBackgroundImage = () => {
+    if (!projectData) return '';
+    const floor = projectData.config.floors.find(f => f.id === currentFloor);
+    return floor ? floor.bgImage : '';
   };
 
   const nextImage = (e) => {
@@ -117,19 +81,19 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
         <div style={{ display: 'flex', gap: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '6px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
           <button 
             onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
-            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            style={{ padding: '4px 12px', fontSize: '13px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
           >
             Todos
           </button>
           <button 
             onClick={() => { setFilterType('venta'); setFilterDelivery('todos'); }} 
-            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            style={{ padding: '4px 12px', fontSize: '13px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
           >
             En Venta
           </button>
           <button 
             onClick={() => { setFilterType('alquiler'); setFilterDelivery('todos'); }} 
-            style={{ padding: '8px 20px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            style={{ padding: '4px 12px', fontSize: '13px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
           >
             En Alquiler
           </button>
@@ -188,7 +152,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
             key={floor.id}
             onClick={() => setCurrentFloor(floor.id)} 
             style={{ 
-              padding: '12px 20px', 
+              padding: '6px 12px', fontSize: '13px', 
               background: currentFloor === floor.id ? '#3b82f6' : '#ffffff', 
               color: currentFloor === floor.id ? '#ffffff' : '#334155', 
               border: '2px solid #e2e8f0', 
@@ -205,7 +169,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       </div>
 
       <TransformWrapper
-        initialScale={1.25}
+        initialScale={0.35}
         initialPositionX={0}
         initialPositionY={0}
         minScale={1.25}
@@ -230,7 +194,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
               <button 
                 onClick={() => window.location.reload()} 
                 title="Inicio (Recargar)"
-                style={{ width: '56px', height: '56px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
+                style={{ width: '32px', height: '32px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
                 onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)'; e.currentTarget.style.color = '#3b82f6'; }}
                 onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748b'; }}
               >
@@ -240,7 +204,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
               <button 
                 onClick={() => zoomIn()} 
                 title="Acercar"
-                style={{ width: '56px', height: '56px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
+                style={{ width: '32px', height: '32px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
                 onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)'; e.currentTarget.style.color = '#3b82f6'; }}
                 onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748b'; }}
               >
@@ -250,7 +214,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
               <button 
                 onClick={() => zoomOut()} 
                 title="Alejar"
-                style={{ width: '56px', height: '56px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
+                style={{ width: '32px', height: '32px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
                 onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)'; e.currentTarget.style.color = '#3b82f6'; }}
                 onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748b'; }}
               >
@@ -281,12 +245,13 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                 <MapSvgOverlay 
                   selectedLocal={selectedLocal} 
                   onSelectLocal={onSelectLocal} 
-                  localsData={mockLocals} 
+                  localsData={projectData ? projectData.data : []} 
                   zoomToElement={zoomToElement}
                   currentFloor={currentFloor}
                   filterType={filterType}
                   filterDelivery={filterDelivery}
                   onSelectVision={onSelectVision}
+                  projectSvg={projectData ? projectData.svg : null}
                 />
               </div>
             </TransformComponent>
@@ -403,7 +368,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
           <button 
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCloseVision(); }}
             className="absolute bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center cursor-pointer shadow-2xl transition-transform hover:scale-110"
-            style={{ width: '40px', height: '40px', top: '-20px', right: '-20px', border: '3px solid white', zIndex: 10 }}
+            style={{ width: '32px', height: '32px', top: '-20px', right: '-20px', border: '3px solid white', zIndex: 10 }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
           </button>
@@ -412,3 +377,8 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     </div>
   );
 }
+
+
+
+
+

@@ -1,35 +1,33 @@
-import React, { useState } from 'react';
-import InteractiveMap from './components/Map/InteractiveMap';
-import LocalCard from './components/LocalDetails/LocalCard';
-
-import { Store, X } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import MapApp from './pages/MapApp';
 
 function App() {
-  const [selectedLocal, setSelectedLocal] = useState(null);
-  const [visionMode, setVisionMode] = useState(null);
+  const [isInIframe, setIsInIframe] = useState(false);
+
+  useEffect(() => {
+    // Detectamos si la página se está cargando dentro de un iframe
+    try {
+      setIsInIframe(window.self !== window.top);
+    } catch (e) {
+      setIsInIframe(true);
+    }
+  }, []);
 
   return (
-    <div className="flex h-screen w-full bg-[#f4f7f6] text-slate-900 overflow-hidden font-sans relative">
-      {/* El logo lateral ha sido eliminado completamente por petición del usuario */}
-
-      <div className="absolute inset-0 z-0">
-        <InteractiveMap 
-          selectedLocal={selectedLocal} 
-          onSelectLocal={setSelectedLocal} 
-          visionMode={visionMode}
-          onCloseVision={() => setVisionMode(null)}
-          onSelectVision={(mode) => setVisionMode(mode)}
-        />
-      </div>
-      
-      {selectedLocal && (
-        <LocalCard 
-          local={selectedLocal} 
-          onClose={() => setSelectedLocal(null)}
-          onShowVision={(type) => setVisionMode(type)}
-        />
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={isInIframe ? <MapApp /> : <LandingPage />} />
+        
+        {/* Rutas explícitas */}
+        <Route path="/map" element={<MapApp />} />
+        <Route path="/landing" element={<LandingPage />} />
+        
+        {/* Ruta dinámica para Multi-tenant */}
+        <Route path="/:projectId" element={<MapApp />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
