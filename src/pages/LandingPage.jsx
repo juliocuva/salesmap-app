@@ -251,6 +251,88 @@ export default function LandingPage() {
           </p>
         </div>
       </section>
+
+      {/* Contact Section */}
+      <section id="contacto" className="py-24 bg-white relative z-10 text-slate-800 border-t border-slate-100">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left: Info & Form */}
+            <div>
+              <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-2">Contacto</p>
+              <h2 className="text-4xl md:text-5xl font-light text-[#0d2a26] mb-6 leading-tight">
+                Iniciar<br />
+                <span className="font-bold text-[#0d2a26]">Proyecto.</span>
+              </h2>
+              
+              <p className="text-slate-600 mb-8 max-w-md leading-relaxed text-sm">
+                Hablemos sobre tu próximo ecosistema digital. Si tienes un problema de negocio, nosotros diseñamos la arquitectura.
+              </p>
+              
+              <div className="space-y-3 text-sm text-slate-700 mb-12">
+                <p className="flex items-center gap-2">
+                  <span className="text-[#3b82f6] font-bold">in</span> 
+                  <a href="https://linkedin.com/in/juliocuva" target="_blank" rel="noopener noreferrer" className="hover:text-[#3b82f6] transition-colors">Julio César Uva Ramírez</a>
+                </p>
+                <p><strong>Sede Principal:</strong> Pereira, Risaralda</p>
+                <p className="flex items-center gap-2">
+                  <span className="text-green-500">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                  </span>
+                  <strong>WhatsApp:</strong> <a href="https://wa.me/573013970002" className="hover:text-green-600 font-medium">+57 301 397 0002</a>
+                </p>
+                <p><strong>Agencia:</strong> mouselabco@gmail.com</p>
+                <p><strong>Directo:</strong> juliocuva@gmail.com</p>
+              </div>
+
+              {/* Form Box */}
+              <div className="bg-[#f4f7f6] p-8 rounded-3xl shadow-sm border border-slate-200/60">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 mb-2">Empresa o startup</label>
+                    <input type="text" placeholder="Ej. MouseLab" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#0d2a26] transition-all text-sm shadow-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-600 mb-2">Correo corporativo</label>
+                    <input type="email" placeholder="ejemplo@empresa.com" className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#0d2a26] transition-all text-sm shadow-sm" />
+                  </div>
+                </div>
+                <div className="mb-8">
+                  <label className="block text-xs font-semibold text-slate-600 mb-2">Área de requerimiento</label>
+                  <select className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-[#0d2a26] transition-all text-sm text-slate-600 appearance-none shadow-sm">
+                    <option>Selecciona una opción..</option>
+                    <option>Planos Interactivos (Bemap)</option>
+                    <option>Desarrollo Web a Medida</option>
+                    <option>Consultoría Tecnológica</option>
+                  </select>
+                </div>
+                
+                <div className="flex justify-center">
+                  <a href="https://wa.me/573013970002?text=Hola,%20tengo%20un%20proyecto%20en%20mente." target="_blank" rel="noopener noreferrer" className="bg-[#25D366] text-white px-8 py-3.5 rounded-full font-semibold hover:bg-[#20bd5a] transition-colors inline-flex items-center gap-2 shadow-lg shadow-green-500/30">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    Ponte en contacto
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Map */}
+            <div className="h-full min-h-[500px] rounded-3xl overflow-hidden shadow-xl bg-slate-200 border-8 border-white/50 relative">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127251.27708579048!2d-75.77666245347209!3d4.804791054325492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e388748eb56c1fd%3A0x952f010ea3db8a83!2sPereira%2C%20Risaralda!5e0!3m2!1sen!2sco!4v1700000000000!5m2!1sen!2sco" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, position: 'absolute', top: 0, left: 0, filter: 'grayscale(100%) opacity(0.85)' }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </div>
   );
+
 }
