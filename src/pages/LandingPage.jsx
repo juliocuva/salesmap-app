@@ -17,6 +17,7 @@ export default function LandingPage() {
             <a href="#solucion" className="text-sm font-medium hover:text-[#ECCE76] transition-colors text-white">Plataforma</a>
             <a href="#caso-exito" className="text-sm font-medium hover:text-[#ECCE76] transition-colors text-white">Caso de Éxito</a>
             <a href="#inversion" className="text-sm font-medium hover:text-[#ECCE76] transition-colors text-white">Inversión</a>
+            <a href="#contacto" className="text-sm font-medium hover:text-[#ECCE76] transition-colors text-white">Contacto</a>
           </div>
         </div>
       </nav>
