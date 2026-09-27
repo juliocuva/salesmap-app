@@ -111,7 +111,7 @@ export default function LandingPage() {
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 max-w-[1400px] mx-auto items-stretch">
           {/* Feature 1 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut drop-shadow-lg relative overflow-hidden group transition-colors flex flex-col">
+          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
             <div className="mb-5">
               <Target className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Afinidad IA:<br />Proyecta el negocio</h3>
@@ -122,7 +122,7 @@ export default function LandingPage() {
           </div>
 
           {/* Feature 2 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut drop-shadow-lg relative overflow-hidden group transition-colors flex flex-col">
+          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
             <div className="mb-5">
               <Activity className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Radar de<br />entorno</h3>
@@ -133,7 +133,7 @@ export default function LandingPage() {
           </div>
 
           {/* Feature 3 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut drop-shadow-lg relative overflow-hidden group transition-colors flex flex-col">
+          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
             <div className="mb-5">
               <LayoutTemplate className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Cero<br />fricción</h3>
@@ -144,7 +144,7 @@ export default function LandingPage() {
           </div>
 
           {/* Feature 4 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut drop-shadow-lg relative overflow-hidden group transition-colors flex flex-col">
+          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
             <div className="mb-5">
               <Globe className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Integración<br />Universal</h3>
@@ -216,7 +216,7 @@ export default function LandingPage() {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#184943] text-[#FAFDFF] p-8 md:p-10 bemap-cut drop-shadow-xl flex flex-col relative md:-translate-y-2">
+          <div className="bg-[#184943] text-[#FAFDFF] p-8 md:p-10 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all flex flex-col relative md:-translate-y-2">
             <div className="flex justify-between items-start mb-1">
               <h3 className="text-xl md:text-2xl font-medium text-white">Soporte y Nube</h3>
               <span className="bg-[#ECCE76] text-[#184943] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">

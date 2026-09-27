@@ -495,3 +495,11 @@ select.input option {
           drop-shadow(-1px 0px 0px rgba(236,206,118,0.5))
           drop-shadow(0 10px 15px rgba(0,0,0,0.1));
 }
+
+.bemap-outline-light {
+  filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.15)) 
+          drop-shadow(0px -1px 0px rgba(255,255,255,0.15)) 
+          drop-shadow(1px 0px 0px rgba(255,255,255,0.15)) 
+          drop-shadow(-1px 0px 0px rgba(255,255,255,0.15))
+          drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+}
