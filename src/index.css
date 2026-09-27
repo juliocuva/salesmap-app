@@ -512,11 +512,11 @@ select.input option {
 
 .bemap-cut-inner {
   clip-path: polygon(
-    17px 0, 
+    18px 0, 
     100% 0, 
-    100% calc(100% - 17px), 
-    calc(100% - 17px) 100%, 
+    100% calc(100% - 18px), 
+    calc(100% - 18px) 100%, 
     0 100%, 
-    0 17px
+    0 18px
   );
 }
