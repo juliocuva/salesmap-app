@@ -78,21 +78,25 @@ export default function LandingPage() {
               </p>
             </div>
             
-            <div className="lg:col-span-1 bg-white p-8 bemap-cut bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col h-full relative overflow-hidden group">
+            <div className="lg:col-span-1 bemap-outline-green bemap-outline-yellow-hover transition-all h-full group">
+                <div className="bg-white p-8 bemap-cut flex flex-col h-full relative overflow-hidden">
               <div className="w-12 h-12 bg-[#184943] rounded-xl flex items-center justify-center mb-6 text-[#ECCE76] font-medium text-lg shadow-md relative z-10">01</div>
               <h3 className="text-xl md:text-2xl font-medium mb-5 text-[#184943] relative z-10">El PDF Incomprensible</h3>
-              <p className="text-[#184943]/70 leading-relaxed text-sm flex-grow relative z-10">
-                Las líneas técnicas y los números fríos no transmiten el potencial real de un espacio. El cliente es incapaz de visualizar el tamaño, el flujo comercial o el emplazamiento.
-              </p>
-            </div>
+                <p className="text-[#184943]/70 leading-relaxed text-sm flex-grow relative z-10">
+                  Las líneas técnicas y los números fríos no transmiten el potencial real de un espacio. El cliente es incapaz de visualizar el tamaño, el flujo comercial o el emplazamiento.
+                </p>
+              </div>
+              </div>
             
-            <div className="lg:col-span-1 bg-white p-8 bemap-cut bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col h-full relative overflow-hidden group">
+            <div className="lg:col-span-1 bemap-outline-green bemap-outline-yellow-hover transition-all h-full group">
+                <div className="bg-white p-8 bemap-cut flex flex-col h-full relative overflow-hidden">
               <div className="w-12 h-12 bg-[#184943] rounded-xl flex items-center justify-center mb-6 text-[#ECCE76] font-medium text-lg shadow-md relative z-10">02</div>
               <h3 className="text-xl md:text-2xl font-medium mb-5 text-[#184943] relative z-10">La Indecisión</h3>
-              <p className="text-[#184943]/70 leading-relaxed text-sm flex-grow relative z-10">
-                Muchos compradores tienen el capital listo, pero dudan profundamente porque no saben qué negocio montar allí ni conocen la competencia real del entorno.
-              </p>
-            </div>
+                <p className="text-[#184943]/70 leading-relaxed text-sm flex-grow relative z-10">
+                  Muchos compradores tienen el capital listo, pero dudan profundamente porque no saben qué negocio montar allí ni conocen la competencia real del entorno.
+                </p>
+              </div>
+              </div>
           </div>
         </div>
       </section>
@@ -111,40 +115,47 @@ export default function LandingPage() {
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5 max-w-[1400px] mx-auto items-stretch">
           {/* Feature 1 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
+          <div className="bemap-outline-light bemap-outline-yellow-hover transition-all group h-full">
+              <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut relative overflow-hidden flex flex-col h-full">
             <div className="mb-5">
               <Target className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Afinidad IA:<br />Proyecta el negocio</h3>
             </div>
             <p className="text-white/70 mb-6 text-sm leading-relaxed flex-grow">
               El sistema sugiere giros de negocio ideales según el metraje, muestra renders fotorrealistas y entrega indicadores de viabilidad.
-            </p>
-          </div>
+              </p>
+            </div>
+            </div>
 
           {/* Feature 2 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
+          <div className="bemap-outline-light bemap-outline-yellow-hover transition-all group h-full">
+              <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut relative overflow-hidden flex flex-col h-full">
             <div className="mb-5">
               <Activity className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Radar de<br />entorno</h3>
             </div>
             <p className="text-white/70 text-sm leading-relaxed flex-grow">
               Bemap analiza la zona de influencia y muestra distancias a marcas clave y nodos estratégicos en tiempo real.
-            </p>
-          </div>
+              </p>
+            </div>
+            </div>
 
           {/* Feature 3 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
+          <div className="bemap-outline-light bemap-outline-yellow-hover transition-all group h-full">
+              <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut relative overflow-hidden flex flex-col h-full">
             <div className="mb-5">
               <LayoutTemplate className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Cero<br />fricción</h3>
             </div>
             <p className="text-white/70 text-sm leading-relaxed flex-grow">
               Sus asesores actualizan el estado de los locales desde una simple hoja de cálculo. Se refleja al instante.
-            </p>
-          </div>
+              </p>
+            </div>
+            </div>
 
           {/* Feature 4 */}
-          <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all relative overflow-hidden group flex flex-col">
+          <div className="bemap-outline-light bemap-outline-yellow-hover transition-all group h-full">
+              <div className="bg-[#184943] text-white p-6 xl:p-8 bemap-cut relative overflow-hidden flex flex-col h-full">
             <div className="mb-5">
               <Globe className="w-8 h-8 text-[#ECCE76] mb-4" strokeWidth={1.5} />
               <h3 className="text-xl font-medium m-0 leading-tight">Integración<br />Universal</h3>
@@ -203,7 +214,8 @@ export default function LandingPage() {
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-[900px] mx-auto items-stretch">
           {/* Card 1 */}
-          <div className="bg-white p-8 md:p-10 bemap-cut bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col md:-translate-y-2">
+          <div className="bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col md:-translate-y-2 group h-full">
+              <div className="bg-white p-8 md:p-10 bemap-cut flex flex-col h-full relative">
             <h3 className="text-xl md:text-2xl font-medium mb-1 text-[#184943]">Implementación Integral</h3>
             <p className="text-[#ECCE76] text-[10px] font-medium uppercase tracking-widest mb-6">Setup Único</p>
             <p className="text-[#184943]/70 text-sm leading-relaxed mb-8 flex-grow">
@@ -211,12 +223,14 @@ export default function LandingPage() {
             </p>
             <div className="border-t border-[#184943]/10 pt-6 mt-auto">
               <span className="text-3xl font-medium text-[#184943]">$2,500</span>
-              <span className="text-[#184943]/50 text-sm ml-2">USD</span>
+                <span className="text-[#184943]/50 text-sm ml-2">USD</span>
+              </div>
             </div>
-          </div>
+            </div>
 
           {/* Card 2 */}
-          <div className="bg-[#184943] text-[#FAFDFF] p-8 md:p-10 bemap-cut bemap-outline-light bemap-outline-yellow-hover transition-all flex flex-col relative md:-translate-y-2">
+          <div className="bemap-outline-light bemap-outline-yellow-hover transition-all flex flex-col relative md:-translate-y-2 group h-full">
+              <div className="bg-[#184943] text-[#FAFDFF] p-8 md:p-10 bemap-cut flex flex-col h-full relative">
             <div className="flex justify-between items-start mb-1">
               <h3 className="text-xl md:text-2xl font-medium text-white">Soporte y Nube</h3>
               <span className="bg-[#ECCE76] text-[#184943] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
@@ -229,9 +243,10 @@ export default function LandingPage() {
             </p>
             <div className="border-t border-white/20 pt-6 mt-auto">
               <span className="text-3xl font-medium text-white">$199</span>
-              <span className="text-white/50 text-sm ml-2">USD / mes</span>
+                <span className="text-white/50 text-sm ml-2">USD / mes</span>
+              </div>
             </div>
-          </div>
+            </div>
         </div>
       </section>
 
