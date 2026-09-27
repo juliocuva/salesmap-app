@@ -481,25 +481,25 @@ select.input option {
 }
 
 .bemap-outline-green {
-  filter: drop-shadow(0px 1px 0px rgba(24,73,67,0.15)) 
-          drop-shadow(0px -1px 0px rgba(24,73,67,0.15)) 
-          drop-shadow(1px 0px 0px rgba(24,73,67,0.15)) 
-          drop-shadow(-1px 0px 0px rgba(24,73,67,0.15))
-          drop-shadow(0 10px 15px rgba(0,0,0,0.05));
+  filter: drop-shadow(0px 2px 0px rgba(24,73,67,0.4)) 
+          drop-shadow(0px -2px 0px rgba(24,73,67,0.4)) 
+          drop-shadow(2px 0px 0px rgba(24,73,67,0.4)) 
+          drop-shadow(-2px 0px 0px rgba(24,73,67,0.4))
+          drop-shadow(0 10px 15px rgba(0,0,0,0.08));
 }
 
 .bemap-outline-yellow-hover:hover {
-  filter: drop-shadow(0px 1px 0px rgba(236,206,118,0.5)) 
-          drop-shadow(0px -1px 0px rgba(236,206,118,0.5)) 
-          drop-shadow(1px 0px 0px rgba(236,206,118,0.5)) 
-          drop-shadow(-1px 0px 0px rgba(236,206,118,0.5))
-          drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+  filter: drop-shadow(0px 2px 0px rgba(236,206,118,0.8)) 
+          drop-shadow(0px -2px 0px rgba(236,206,118,0.8)) 
+          drop-shadow(2px 0px 0px rgba(236,206,118,0.8)) 
+          drop-shadow(-2px 0px 0px rgba(236,206,118,0.8))
+          drop-shadow(0 10px 15px rgba(0,0,0,0.15));
 }
 
 .bemap-outline-light {
-  filter: drop-shadow(0px 1px 0px rgba(255,255,255,0.15)) 
-          drop-shadow(0px -1px 0px rgba(255,255,255,0.15)) 
-          drop-shadow(1px 0px 0px rgba(255,255,255,0.15)) 
-          drop-shadow(-1px 0px 0px rgba(255,255,255,0.15))
+  filter: drop-shadow(0px 2px 0px rgba(255,255,255,0.25)) 
+          drop-shadow(0px -2px 0px rgba(255,255,255,0.25)) 
+          drop-shadow(2px 0px 0px rgba(255,255,255,0.25)) 
+          drop-shadow(-2px 0px 0px rgba(255,255,255,0.25))
           drop-shadow(0 10px 15px rgba(0,0,0,0.15));
 }
