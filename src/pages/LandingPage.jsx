@@ -272,7 +272,7 @@ export default function LandingPage() {
               <div className="space-y-3 text-sm text-slate-700 mb-12">
                 <p className="flex items-center gap-2">
                   <span className="text-[#3b82f6] font-bold">in</span> 
-                  <a href="https://linkedin.com/in/juliocuva" target="_blank" rel="noopener noreferrer" className="hover:text-[#3b82f6] transition-colors">Julio César Uva Ramírez</a>
+                  <a href="https://www.linkedin.com/in/julio-cesar-uva-ram%C3%ADrez/" target="_blank" rel="noopener noreferrer" className="hover:text-[#3b82f6] transition-colors">Julio César Uva Ramírez</a>
                 </p>
                 <p><strong>Sede Principal:</strong> Pereira, Risaralda</p>
                 <p className="flex items-center gap-2">
