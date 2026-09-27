@@ -262,8 +262,8 @@ export default function LandingPage() {
             <div className="flex flex-col justify-center">
               <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-2">Contacto</p>
               <h2 className="text-3xl md:text-4xl font-light text-[#0d2a26] mb-4 leading-tight">
-                Iniciar<br />
-                <span className="font-bold text-[#0d2a26]">Proyecto.</span>
+                ¡Iniciemos un<br />
+                <span className="font-bold text-[#0d2a26]">proyecto!</span>
               </h2>
               
               <p className="text-slate-600 mb-6 max-w-md leading-relaxed text-sm">
