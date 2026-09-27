@@ -479,3 +479,19 @@ select.input option {
     0 24px
   );
 }
+
+.bemap-outline-green {
+  filter: drop-shadow(0px 1px 0px rgba(24,73,67,0.15)) 
+          drop-shadow(0px -1px 0px rgba(24,73,67,0.15)) 
+          drop-shadow(1px 0px 0px rgba(24,73,67,0.15)) 
+          drop-shadow(-1px 0px 0px rgba(24,73,67,0.15))
+          drop-shadow(0 10px 15px rgba(0,0,0,0.05));
+}
+
+.bemap-outline-yellow-hover:hover {
+  filter: drop-shadow(0px 1px 0px rgba(236,206,118,0.5)) 
+          drop-shadow(0px -1px 0px rgba(236,206,118,0.5)) 
+          drop-shadow(1px 0px 0px rgba(236,206,118,0.5)) 
+          drop-shadow(-1px 0px 0px rgba(236,206,118,0.5))
+          drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}

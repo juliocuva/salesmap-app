@@ -78,7 +78,7 @@ export default function LandingPage() {
               </p>
             </div>
             
-            <div className="lg:col-span-1 bg-white p-8 bemap-cut drop-shadow-sm transition-all flex flex-col h-full relative overflow-hidden group">
+            <div className="lg:col-span-1 bg-white p-8 bemap-cut bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col h-full relative overflow-hidden group">
               <div className="w-12 h-12 bg-[#184943] rounded-xl flex items-center justify-center mb-6 text-[#ECCE76] font-medium text-lg shadow-md relative z-10">01</div>
               <h3 className="text-xl md:text-2xl font-medium mb-5 text-[#184943] relative z-10">El PDF Incomprensible</h3>
               <p className="text-[#184943]/70 leading-relaxed text-sm flex-grow relative z-10">
@@ -86,7 +86,7 @@ export default function LandingPage() {
               </p>
             </div>
             
-            <div className="lg:col-span-1 bg-white p-8 bemap-cut drop-shadow-sm transition-all flex flex-col h-full relative overflow-hidden group">
+            <div className="lg:col-span-1 bg-white p-8 bemap-cut bemap-outline-green bemap-outline-yellow-hover transition-all flex flex-col h-full relative overflow-hidden group">
               <div className="w-12 h-12 bg-[#184943] rounded-xl flex items-center justify-center mb-6 text-[#ECCE76] font-medium text-lg shadow-md relative z-10">02</div>
               <h3 className="text-xl md:text-2xl font-medium mb-5 text-[#184943] relative z-10">La Indecisión</h3>
               <p className="text-[#184943]/70 leading-relaxed text-sm flex-grow relative z-10">
