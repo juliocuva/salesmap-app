@@ -10,7 +10,7 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 w-full z-50 bg-[#0d2a26]/95 backdrop-blur-md border-b border-white/10">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between px-6 md:px-12 py-4">
           <div className="flex items-center">
-            <img src="/logo-bemap.svg" alt="Bemap.pro Logo" className="h-8 w-auto" />
+            <img src="/logo-bemap.svg" alt="Bemap.pro Logo" className="h-12 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#problema" className="text-sm font-medium hover:text-[#ECCE76] transition-colors text-white">Problema</a>
@@ -51,7 +51,7 @@ export default function LandingPage() {
               </p>
               
               <div className="flex flex-row items-center gap-4">
-                <a href="#inversion" className="inline-flex bg-[#ECCE76] text-[#184943] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white transition-all items-center gap-2 shadow-md">
+                <a href="https://wa.me/573000000000?text=Hola,%20quiero%20agendar%20una%20demostración%20de%20Bemap.pro" target="_blank" rel="noopener noreferrer" className="inline-flex bg-[#ECCE76] text-[#184943] px-4 py-2 rounded-lg text-sm font-semibold hover:bg-white transition-all items-center gap-2 shadow-md">
                   Agendar Demostración <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link to="/map" className="inline-flex bg-white/10 border border-white/20 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-white/20 transition-all items-center gap-2 backdrop-blur-md">
@@ -243,9 +243,9 @@ export default function LandingPage() {
           <p className="text-sm md:text-base text-white/70 mb-8 font-light leading-relaxed">
             Permítanos agendar una sesión interactiva de 15 minutos para mostrarle en vivo cómo funciona la plataforma y cómo aplicarla a su proyecto esta misma semana.
           </p>
-          <button className="bg-[#ECCE76] text-[#184943] px-8 py-4 rounded-xl font-medium hover:bg-white transition-colors inline-flex items-center gap-2 shadow-lg">
+          <a href="https://wa.me/573000000000?text=Hola,%20quiero%20agendar%20una%20demostración%20de%20Bemap.pro" target="_blank" rel="noopener noreferrer" className="bg-[#ECCE76] text-[#184943] px-8 py-4 rounded-xl font-medium hover:bg-white transition-colors inline-flex items-center gap-2 shadow-lg w-fit mx-auto">
             Agendar Demo de 15 Minutos <ArrowRight className="w-5 h-5" />
-          </button>
+          </a>
           <p className="mt-8 text-xs text-white/40 font-light">
             Sin compromisos. Solo un recorrido técnico y funcional.
           </p>
