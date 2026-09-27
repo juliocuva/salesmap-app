@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Papa from 'papaparse';
 import InteractiveMap from '../components/Map/InteractiveMap';
 import LocalCard from '../components/LocalDetails/LocalCard';
 import { getProject } from '../projects';
@@ -13,10 +14,40 @@ function MapApp() {
 
   useEffect(() => {
     // Si no hay projectId en la URL, asumimos bahia guacamayas como default
-    // O si pasan algo especifíco, lo buscamos
     const activeProject = getProject(projectId || 'bahiaguacamayas');
-    setProjectData(activeProject);
-    setLoading(false);
+    
+    if (activeProject && activeProject.config.sheetUrl) {
+      // Descargar desde Google Sheets CSV
+      Papa.parse(activeProject.config.sheetUrl, {
+        download: true,
+        header: true,
+        complete: (results) => {
+          // Transformar la fila de CSV al formato necesario
+          const sheetData = results.data
+            .filter(row => row.id) // Ignorar filas vacías
+            .map(row => ({
+              id: row.id,
+              name: row.nombre || row.name,
+              area: parseFloat(row.area) || 0,
+              price: (row.precio || row.price) ? parseInt(row.precio || row.price) : null,
+              status: (row.estado || row.status) ? (row.estado || row.status).toLowerCase() : 'disponible',
+              delivery: row.entrega || row.delivery
+            }));
+          
+          setProjectData({ ...activeProject, data: sheetData });
+          setLoading(false);
+        },
+        error: (err) => {
+          console.error("Error cargando CSV:", err);
+          setProjectData(activeProject); // Fallback a los datos locales
+          setLoading(false);
+        }
+      });
+    } else {
+      // Usar los datos locales estáticos si no hay sheetUrl
+      setProjectData(activeProject);
+      setLoading(false);
+    }
   }, [projectId]);
 
   if (loading) {
