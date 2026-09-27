@@ -48,9 +48,16 @@ body {
 /* Flat UI utility classes (New Concept) */
 .flat-panel {
   background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   color: #1e293b;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.08));
+  clip-path: polygon(
+    24px 0, 
+    100% 0, 
+    100% calc(100% - 24px), 
+    calc(100% - 24px) 100%, 
+    0 100%, 
+    0 24px
+  );
 }
 
 .flat-card {
@@ -461,3 +468,14 @@ select.input option {
 
 
 
+
+.bemap-cut {
+  clip-path: polygon(
+    24px 0, 
+    100% 0, 
+    100% calc(100% - 24px), 
+    calc(100% - 24px) 100%, 
+    0 100%, 
+    0 24px
+  );
+}

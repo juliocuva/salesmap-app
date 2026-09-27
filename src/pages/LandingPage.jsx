@@ -180,7 +180,7 @@ export default function LandingPage() {
             </Link>
           </div>
           <div className="lg:col-span-8 w-full flex items-center justify-center">
-            <div className="rounded-2xl overflow-hidden shadow-2xl w-full border-4 border-white/40 relative">
+            <div className="bemap-cut overflow-hidden drop-shadow-2xl w-full border-none relative">
               <img 
                 src="/bemap.png" 
                 alt="Bahía Guacamayas Mapa" 
@@ -203,7 +203,7 @@ export default function LandingPage() {
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-[900px] mx-auto items-stretch">
           {/* Card 1 */}
-          <div className="bg-white border border-[#184943]/10 p-8 md:p-10 rounded-2xl hover:border-[#ECCE76]/50 transition-colors shadow-sm flex flex-col md:-translate-y-2">
+          <div className="bg-white p-8 md:p-10 bemap-cut drop-shadow-md flex flex-col md:-translate-y-2">
             <h3 className="text-xl md:text-2xl font-medium mb-1 text-[#184943]">Implementación Integral</h3>
             <p className="text-[#ECCE76] text-[10px] font-medium uppercase tracking-widest mb-6">Setup Único</p>
             <p className="text-[#184943]/70 text-sm leading-relaxed mb-8 flex-grow">
@@ -216,7 +216,7 @@ export default function LandingPage() {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#184943] text-[#FAFDFF] border border-[#184943] p-8 md:p-10 rounded-2xl shadow-xl flex flex-col relative md:-translate-y-2">
+          <div className="bg-[#184943] text-[#FAFDFF] p-8 md:p-10 bemap-cut drop-shadow-xl flex flex-col relative md:-translate-y-2">
             <div className="flex justify-between items-start mb-1">
               <h3 className="text-xl md:text-2xl font-medium text-white">Soporte y Nube</h3>
               <span className="bg-[#ECCE76] text-[#184943] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
@@ -287,7 +287,7 @@ export default function LandingPage() {
               </div>
 
               {/* Form Box */}
-              <div className="bg-[#f4f7f6] p-8 rounded-3xl shadow-sm border border-slate-200/60">
+              <div className="bg-[#f4f7f6] p-8 bemap-cut drop-shadow-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label className="block text-xs font-semibold text-slate-600 mb-2">Empresa o startup</label>
@@ -318,7 +318,7 @@ export default function LandingPage() {
             </div>
 
             {/* Right: Map */}
-            <div className="h-full min-h-[500px] rounded-3xl overflow-hidden shadow-xl bg-slate-200 border-8 border-white/50 relative">
+            <div className="h-full min-h-[500px] bemap-cut overflow-hidden drop-shadow-xl bg-slate-200 relative">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127251.27708579048!2d-75.77666245347209!3d4.804791054325492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e388748eb56c1fd%3A0x952f010ea3db8a83!2sPereira%2C%20Risaralda!5e0!3m2!1sen!2sco!4v1700000000000!5m2!1sen!2sco" 
                 width="100%" 
