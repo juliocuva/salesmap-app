@@ -76,7 +76,10 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
         const localInfo = localsData.find(l => l.id === area.id);
         
         // Determinar a qué piso pertenece el local (por defecto piso_1)
-        const localFloor = localInfo?.floor || 'piso_1';
+        let localFloor = localInfo?.floor || 'piso_1';
+        if (area.id === 'local_sotano_1') localFloor = 'sotano_1';
+        if (area.id === 'local_sotano_2') localFloor = 'sotano_2';
+        if (area.id === 'local_sotano_3') localFloor = 'sotano_3';
         
         // Si no pertenece al piso actual, no lo dibujamos
         if (localFloor !== currentFloor) return null;
