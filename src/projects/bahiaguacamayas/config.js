@@ -11,7 +11,7 @@ export const config = {
   client: 'Constructora Default',
   sheetUrl: 'https://docs.google.com/spreadsheets/d/1iQEP5NKzqN_rZZ83CzPX0b3ez2o8J6bIoPB4ZyDu1aU/export?format=csv',
   floors: [
-    { id: 'piso_1',   label: 'Primer Piso', bgImage: a('plano.png') },
+    { id: 'piso_1',   label: 'Primer Piso', bgImage: a('plano.jpg') },
     { id: 'sotano_1', label: 'Sótano 1',   bgImage: a('14 de agosto_Planta Sotano 01  N -3.65 mts.webp') },
     { id: 'sotano_2', label: 'Sótano 2',   bgImage: a('14 de agosto_Planta Sotano 02  N -7.65 mts.webp') },
     { id: 'sotano_3', label: 'Sótano 3',   bgImage: a('14 de agosto_Planta Sotano 03  N -11.30 mts.webp') },
