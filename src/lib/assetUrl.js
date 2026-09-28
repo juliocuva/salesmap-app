@@ -3,39 +3,27 @@
  * -----------
  * Resuelve la URL pública de un asset (plano, foto, imagen).
  *
- * ESTRATEGIA:
- *  - Si existe VITE_SUPABASE_URL, los archivos pesados se sirven
- *    desde Supabase Storage → la transferencia NO cuenta contra Vercel.
- *  - Si no existe (desarrollo local o fallback), usa la ruta relativa
- *    del servidor local de Vite.
- *
  * VARIABLES DE ENTORNO:
- *   VITE_SUPABASE_URL      → URL base de tu proyecto Supabase (obligatoria)
- *   VITE_STORAGE_BUCKET    → Nombre del bucket (default: 'assets')
- *   VITE_STORAGE_FOLDER    → Sub-carpeta dentro del bucket (default: 'bahiaguacamayas')
- *                            Deja vacío si los archivos están en la raíz del bucket.
- *
- * USO:
- *   import { getAssetUrl } from '@/lib/assetUrl';
- *   const src = getAssetUrl('plano.png');
- *   // → "https://<proyecto>.supabase.co/storage/v1/object/public/assets/bahiaguacamayas/plano.png"
+ *   VITE_STORAGE_URL    → URL base de Supabase Storage (Config, pública). Prioritaria.
+ *   VITE_SUPABASE_URL   → Fallback si VITE_STORAGE_URL no está definida.
+ *   VITE_STORAGE_BUCKET → Nombre del bucket (default: 'bemap-assets')
+ *   VITE_STORAGE_FOLDER → Sub-carpeta dentro del bucket (default: vacío = raíz)
  */
 
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const STORAGE_URL = import.meta.env.VITE_STORAGE_URL ?? import.meta.env.VITE_SUPABASE_URL;
 const BUCKET      = import.meta.env.VITE_STORAGE_BUCKET ?? 'bemap-assets';
 const FOLDER      = import.meta.env.VITE_STORAGE_FOLDER ?? '';
 
 /**
- * @param {string} filename  - Nombre del archivo. Ej: 'plano.png' o '/plano.png'
+ * @param {string} filename  - Nombre del archivo. Ej: 'plano.jpg'
  * @returns {string}         - URL pública completa del asset
  */
 export function getAssetUrl(filename) {
-  // Normalizar: quitar barra inicial si existe
   const clean = filename.startsWith('/') ? filename.slice(1) : filename;
 
-  if (SUPABASE_URL) {
+  if (STORAGE_URL) {
     const prefix = FOLDER ? `${FOLDER}/` : '';
-    return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${prefix}${clean}`;
+    return `${STORAGE_URL}/storage/v1/object/public/${BUCKET}/${prefix}${clean}`;
   }
 
   // Fallback: Vite dev server (archivos en /public)
