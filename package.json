@@ -7,8 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "upload:assets": "node scripts/upload-assets-to-supabase.mjs"
   },
+
   "dependencies": {
     "@supabase/supabase-js": "^2.110.8",
     "lucide-react": "^1.26.0",
@@ -24,6 +26,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "autoprefixer": "^10.6.1",
+    "dotenv": "^16.4.5",
     "oxlint": "^1.71.0",
     "postcss": "^8.5.28",
     "tailwindcss": "^4.3.3",

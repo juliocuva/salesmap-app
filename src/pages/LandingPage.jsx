@@ -164,6 +164,7 @@ export default function LandingPage() {
               ¿Ya tiene web? Le entregamos un código Iframe para incrustarlo en 5 minutos. ¿No tiene web? Su proyecto opera con un enlace directo y seguro listo para WhatsApp.
             </p>
           </div>
+          </div>
         </div>
 
         <div className="mt-16 flex justify-center">
