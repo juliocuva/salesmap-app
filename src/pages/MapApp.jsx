@@ -26,12 +26,12 @@ function MapApp() {
           const sheetData = results.data
             .filter(row => row.id) // Ignorar filas vacías
             .map(row => ({
-              id: row.id,
-              name: row.nombre || row.name,
+              id: row.id ? row.id.trim() : null,
+              name: (row.nombre || row.name) ? (row.nombre || row.name).trim() : '',
               area: parseFloat(row.area) || 0,
               price: (row.precio || row.price) ? parseInt(row.precio || row.price) : null,
-              status: (row.estado || row.status) ? (row.estado || row.status).toLowerCase() : 'disponible',
-              delivery: row.entrega || row.delivery
+              status: (row.estado || row.status) ? (row.estado || row.status).toLowerCase().trim() : 'disponible',
+              delivery: (row.entrega || row.delivery) ? (row.entrega || row.delivery).trim() : ''
             }));
           
           setProjectData({ ...activeProject, data: sheetData });
