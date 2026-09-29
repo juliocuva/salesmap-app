@@ -46,7 +46,33 @@ export const localsData = [
   { id: "local_14a", name: "Local 14A", area: 27.81, price: 584010000, status: "alquiler", delivery: "2026", front: 5.4, corner: true, terrace: false },
   { id: "local_7", name: "Local 7", area: 43.32, price: 909720000, status: "alquiler", delivery: "2026", front: 7, corner: false, terrace: false },
   { id: "local_47b", name: "Local 47B", area: 17.84, price: 374640000, status: "alquiler", delivery: "2026", front: 3.2, corner: false, terrace: false },
-  { id: "local_47d", name: "Local 47D", area: 18.39, price: 386190000, status: "vendido", delivery: "2026", front: 3.2, corner: false, terrace: false }
+  { id: "local_47d", name: "Local 47D", area: 18.39, price: 386190000, status: "vendido", delivery: "2026", front: 3.2, corner: false, terrace: false },
+
+  // Locales leídos del plano HD — precios pendientes de confirmar
+  { id: "local_1",   name: "Local 1",   area: 117.13, price: null, status: "disponible", delivery: "2026" },
+  { id: "local_1a",  name: "Local 1A",  area: 88.13,  price: null, status: "disponible", delivery: "2026" },
+  { id: "local_4",   name: "Local 4",   area: 41.97,  price: null, status: "disponible", delivery: "2026" },
+  { id: "local_8a",  name: "Local 8A",  area: 5.53,   price: null, status: "disponible", delivery: "2026" },
+  { id: "local_9",   name: "Local 9",   area: 38.10,  price: null, status: "disponible", delivery: "2026" },
+  { id: "local_12",  name: "Local 12",  area: 34.94,  price: null, status: "disponible", delivery: "2026" },
+  { id: "local_12b", name: "Local 12B", area: 25.40,  price: null, status: "disponible", delivery: "2026" },
+  { id: "local_15",  name: "Local 15",  area: 87.30,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_16",  name: "Local 16",  area: 61.00,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_17",  name: "Local 17",  area: 27.00,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_17a", name: "Local 17A", area: 14.41,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_18",  name: "Local 18",  area: 69.00,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_19",  name: "Local 19",  area: 27.00,  price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_20a", name: "Local 20A", area: 22.00,  price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_20b", name: "Local 20B", area: 55.00,  price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_21",  name: "Local 21",  area: 31.95,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_22",  name: "Local 22",  area: 31.05,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_23",  name: "Local 23",  area: 26.71,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_26",  name: "Local 26",  area: 52.00,  price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_28",  name: "Local 28",  area: 67.00,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_29",  name: "Local 29",  area: 33.00,  price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_44",  name: "Local 44",  area: 31.98,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_45",  name: "Local 45",  area: 31.78,  price: null, status: "disponible", delivery: "2027-1" },
+  { id: "local_46a", name: "Local 46A", area: 31.06,  price: null, status: "disponible", delivery: "2027-1" }
 ];
 
 export const environmentData = [
