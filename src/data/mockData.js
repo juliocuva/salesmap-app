@@ -50,9 +50,9 @@ export const mockLocals = [
 ];
 
 export const environmentData = [
-  { label: "Aeropuerto Matecaña", value: "15 minutos", icon: "Plane" },
-  { label: "Bioparque Ukumarí", value: "8 minutos", icon: "TreePine" },
-  { label: "Hospital de Alta Complejidad", value: "8 minutos", icon: "Hospital" },
+  { label: "Aeropuerto Matecaña", value: "15 min", icon: "Plane" },
+  { label: "Bioparque Ukumarí", value: "8 min", icon: "TreePine" },
+  { label: "Hospital de Alta Complejidad", value: "8 min", icon: "Hospital" },
   { label: "Nuevos proyectos de vivienda", value: "12", icon: "Building" }
 ];
 

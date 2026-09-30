@@ -51,15 +51,15 @@ function MapApp() {
   }, [projectId]);
 
   if (loading) {
-    return <div className="flex h-screen items-center justify-center bg-[#f4f7f6]">Cargando...</div>;
+    return <div className="flex h-screen items-center justify-center bg-[#171717]">Cargando...</div>;
   }
 
   if (!projectData) {
-    return <div className="flex h-screen items-center justify-center bg-[#f4f7f6]">Proyecto no encontrado</div>;
+    return <div className="flex h-screen items-center justify-center bg-[#171717]">Proyecto no encontrado</div>;
   }
 
   return (
-    <div className="flex h-screen w-full bg-[#f4f7f6] text-slate-900 overflow-hidden font-sans relative">
+    <div className="flex h-screen w-full bg-[#171717] text-slate-900 overflow-hidden font-sans relative">
       <div className="absolute inset-0 z-0">
         <InteractiveMap 
           selectedLocal={selectedLocal} 

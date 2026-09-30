@@ -11,6 +11,21 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     setCurrentImageIndex(0);
   }, [visionMode]);
 
+  // Temporizador para auto-avanzar el carrusel (autoplay)
+  useEffect(() => {
+    if (!visionMode) return;
+    
+    // Solo activar si hay más de una imagen para este modo
+    const currentImages = getImages();
+    if (currentImages.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % currentImages.length);
+    }, 3500); // 3.5 segundos por slide
+
+    return () => clearInterval(interval);
+  }, [visionMode, currentImageIndex]);
+
   // Cerrar el modo de visión con la tecla ESC
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -63,7 +78,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   };
 
   return (
-    <div className="map-container" style={{ position: 'relative', width: '100vw', height: 'calc(100vh - 100px)', overflow: 'hidden', backgroundColor: '#f4f7f6' }}>
+    <div className="map-container" style={{ position: 'relative', width: '100vw', height: 'calc(100vh - 100px)', overflow: 'hidden', backgroundColor: '#171717' }}>
       {/* Botones de Filtro (Top Center) */}
       <div 
         style={{
@@ -78,50 +93,52 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
           zIndex: 9999
         }}
       >
-        <div style={{ display: 'flex', gap: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '6px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-          <button 
-            onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
-            style={{ padding: '4px 12px', fontSize: '13px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+        <div style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.45)',
+                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
+            <button 
+              onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
+            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             Todos
           </button>
           <button 
             onClick={() => { setFilterType('venta'); setFilterDelivery('todos'); }} 
-            style={{ padding: '4px 12px', fontSize: '13px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             En Venta
           </button>
           <button 
             onClick={() => { setFilterType('alquiler'); setFilterDelivery('todos'); }} 
-            style={{ padding: '4px 12px', fontSize: '13px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontWeight: 'bold', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             En Alquiler
           </button>
         </div>
         
         {filterType === 'venta' && (
-          <div className="animate-fade-in" style={{ display: 'flex', gap: '8px', background: 'rgba(255, 255, 255, 0.9)', padding: '6px', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }}>
-            <button 
-              onClick={() => setFilterDelivery('todos')} 
-              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#64748b', transition: 'all 0.2s ease' }}
+          <div className="animate-fade-in" style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.45)',
+                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
+              <button 
+                onClick={() => setFilterDelivery('todos')} 
+              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               Cualquier Entrega
             </button>
             <button 
               onClick={() => setFilterDelivery('2026')} 
-              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2026' ? '#23AED8' : 'transparent', color: filterDelivery === '2026' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2026' ? '#23AED8' : 'transparent', color: filterDelivery === '2026' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               2026
             </button>
             <button 
               onClick={() => setFilterDelivery('2027-1')} 
-              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2027-1' ? '#22c55e' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2027-1' ? '#22c55e' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               2027-1
             </button>
             <button 
               onClick={() => setFilterDelivery('2027-2')} 
-              style={{ padding: '6px 16px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold', background: filterDelivery === '2027-2' ? '#D3AA26' : 'transparent', color: filterDelivery === '2027-2' ? '#fff' : '#64748b', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2027-2' ? '#D3AA26' : 'transparent', color: filterDelivery === '2027-2' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               2027-2
             </button>
@@ -134,11 +151,11 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
         style={{ 
           display: 'flex',
           flexDirection: 'column',
-          gap: '10px',
+          gap: '12px',
           position: 'absolute', 
-          right: selectedLocal ? '420px' : '150px', 
+          right: selectedLocal ? '500px' : '140px', 
           top: '40px', 
-          zIndex: 9999, // Asegurar que quede por encima de todo
+          zIndex: 9999,
           transition: 'right 0.3s ease'
         }}
       >
@@ -152,15 +169,17 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
             key={floor.id}
             onClick={() => setCurrentFloor(floor.id)} 
             style={{ 
-              padding: '6px 12px', fontSize: '13px', 
-              background: currentFloor === floor.id ? '#3b82f6' : '#ffffff', 
-              color: currentFloor === floor.id ? '#ffffff' : '#334155', 
-              border: '2px solid #e2e8f0', 
-              borderRadius: '8px', 
+              padding: '8px 16px', fontSize: '13px', 
+              background: currentFloor === floor.id ? '#3b82f6' : 'rgba(255, 255, 255, 0.45)', 
+              color: currentFloor === floor.id ? '#ffffff' : '#0f172a', 
+              border: 'none', 
+              borderRadius: '9999px', 
               cursor: 'pointer', 
-              fontWeight: 'bold',
+              fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px',
               transition: 'all 0.3s ease', 
-              boxShadow: '0 4px 15px rgba(0,0,0,0.1)' 
+              boxShadow: currentFloor === floor.id ? '0 4px 15px rgba(59, 130, 246, 0.4)' : '0 4px 15px rgba(0,0,0,0.08)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)'
             }}
           >
             {floor.label}
@@ -182,43 +201,52 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
           <>
             {/* Controles de Zoom a la izquierda */}
             <div 
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-2"
               style={{ 
                 position: 'absolute', 
-                left: '2rem', 
+                left: '140px', 
                 top: '50%', 
                 transform: 'translateY(-50%)', 
-                zIndex: 100
+                zIndex: 100,
+                background: 'rgba(15, 23, 42, 0.5)',
+                  backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+                padding: '8px',
+                borderRadius: '30px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                border: '1px solid rgba(255, 255, 255, 0.1)'
               }}
             >
               <button 
-                onClick={() => window.location.reload()} 
-                title="Inicio (Recargar)"
-                style={{ width: '32px', height: '32px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
-                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)'; e.currentTarget.style.color = '#3b82f6'; }}
-                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748b'; }}
+                onClick={() => resetTransform()} 
+                title="Inicio"
+                style={{ width: '40px', height: '40px', background: 'transparent', color: '#f8fafc', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.2s ease' }}
+                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'; e.currentTarget.style.color = '#ffffff'; }}
+                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#f8fafc'; }}
               >
-                <Home size={24} strokeWidth={2.5} />
+                <Home size={22} strokeWidth={1.5} />
               </button>
               
+              <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.15)', margin: '0 4px' }}></div>
+
               <button 
                 onClick={() => zoomIn()} 
                 title="Acercar"
-                style={{ width: '32px', height: '32px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
-                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)'; e.currentTarget.style.color = '#3b82f6'; }}
-                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748b'; }}
+                style={{ width: '40px', height: '40px', background: 'transparent', color: '#f8fafc', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.2s ease' }}
+                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'; e.currentTarget.style.color = '#ffffff'; }}
+                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#f8fafc'; }}
               >
-                <Plus size={24} strokeWidth={2.5} />
+                <Plus size={22} strokeWidth={1.5} />
               </button>
               
               <button 
                 onClick={() => zoomOut()} 
                 title="Alejar"
-                style={{ width: '32px', height: '32px', background: '#ffffff', color: '#64748b', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.3s ease', boxShadow: '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)' }}
-                onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06)'; e.currentTarget.style.color = '#3b82f6'; }}
-                onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04)'; e.currentTarget.style.color = '#64748b'; }}
+                style={{ width: '40px', height: '40px', background: 'transparent', color: '#f8fafc', border: 'none', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'all 0.2s ease' }}
+                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)'; e.currentTarget.style.color = '#ffffff'; }}
+                onMouseOut={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#f8fafc'; }}
               >
-                <Minus size={24} strokeWidth={2.5} />
+                <Minus size={22} strokeWidth={1.5} />
               </button>
             </div>
             
@@ -271,18 +299,36 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
             borderRadius: '5px'
           }}
         >
-          <img 
-            src={images[currentImageIndex]} 
-            alt="Render"
+          <div
             style={{
               height: '70vh',
               width: visionMode.startsWith('camera') ? 'calc(70vh * 16 / 9)' : '70vh',
               maxWidth: '90vw',
-              objectFit: 'cover',
+              position: 'relative',
               borderRadius: '5px',
-              outline: '5px solid white'
+              outline: '5px solid white',
+              backgroundColor: '#171717',
+              overflow: 'hidden'
             }}
-          />
+          >
+            {images.map((imgSrc, idx) => (
+              <img 
+                key={idx}
+                src={imgSrc} 
+                alt={`Render ${idx + 1}`}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  opacity: currentImageIndex === idx ? 1 : 0,
+                  transition: 'opacity 0.8s ease-in-out'
+                }}
+              />
+            ))}
+          </div>
           
           {images.length > 1 && (
             <>

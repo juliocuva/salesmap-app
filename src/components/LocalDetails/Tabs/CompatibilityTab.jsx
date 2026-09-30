@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { compatibilityRules, categories } from '../../../data/mockData';
-import { Target, CheckCircle2, Coffee, IceCream, Dog, Pill, Utensils, Gem } from 'lucide-react';
+import { categories } from '../../../data/mockData';
+import { Target, Coffee, IceCream, Dog, Pill, Utensils, Gem, Image as ImageIcon } from 'lucide-react';
 
 const iconMap = {
   "Coffee": Coffee,
@@ -20,19 +20,17 @@ const categoryColors = {
   "joyeria": { bg: '#d2f0f4', text: '#23545b', border: '#a3d9e0' }
 };
 
-export default function CompatibilityTab({ onShowVision }) {
+export default function CompatibilityTab({ localArea, onShowVision }) {
   const [selectedType, setSelectedType] = useState('');
-
-  const result = selectedType ? compatibilityRules[selectedType] : null;
 
   return (
     <div className="animate-fade-in flex-col gap-2 flex">
       {/* Category Grid */}
-      <div className="grid grid-cols-2 gap-2">
+      <div className="flex flex-col gap-2 mb-2">
         {categories.map(cat => {
           const Icon = iconMap[cat.icon] || Target;
           const isActive = selectedType === cat.id;
-          const colors = categoryColors[cat.id] || { bg: '#f1f5f9', text: '#475569', border: '#e2e8f0' };
+          const colors = categoryColors[cat.id] || { bg: '#f1f5f9', text: '#0f172a', border: '#e2e8f0' };
           
           return (
             <button 
@@ -41,12 +39,13 @@ export default function CompatibilityTab({ onShowVision }) {
                 setSelectedType(cat.id);
                 onShowVision(cat.id);
               }}
-              className="flex items-center justify-center p-1.5 transition-all"
+              className="flex items-center justify-center p-1.5 transition-all w-4/5 mx-auto cursor-pointer"
               style={{
-                background: colors.bg,
-                color: colors.text,
-                borderRadius: '8px',
+                background: isActive ? 'rgba(0,0,0,0.02)' : 'transparent',
+                color: '#0f172a',
+                borderRadius: '0',
                 border: 'none',
+                borderBottom: isActive ? '2px solid ' + colors.text : '1px solid rgba(0,0,0,0.1)',
                 outline: 'none',
                 boxShadow: isActive ? '0 4px 12px rgba(0,0,0,0.15)' : 'none',
                 transform: isActive ? 'translateY(-2px)' : 'none',
@@ -54,61 +53,13 @@ export default function CompatibilityTab({ onShowVision }) {
               }}
             >
               <div className="flex items-center justify-center flex-row gap-2 opacity-90 w-full">
-                <Icon size={14} strokeWidth={isActive ? 2.5 : 2} />
-                <span className="font-bold" style={{ fontSize: '11px' }}>{cat.label}</span>
+                <Icon size={14} strokeWidth={1.5} />
+                <span className="uppercase tracking-widest font-normal" style={{ fontSize: "10px" }}>{cat.label}</span>
               </div>
             </button>
           );
         })}
-      </div>
-
-      <div style={{ marginTop: '12px' }}>
-        {result ? (
-          <div className="animate-fade-in flex flex-col gap-3 w-full">
-            
-            {/* Card 1: Probabilidad */}
-            <div 
-              className="p-3 flex justify-between items-center shadow-sm"
-              style={{ background: '#d2f0f4', borderRadius: '12px' }}
-            >
-              <span className="font-semibold opacity-90" style={{ color: '#23545b', fontSize: '12px' }}>Probabilidad de Éxito Estimada:</span>
-              <div 
-                className="font-bold tracking-tight"
-                style={{ 
-                  fontSize: '24px', 
-                  lineHeight: '1',
-                  color: '#23545b'
-                }}
-              >
-                {result.score}%
-              </div>
-            </div>
-            
-            {/* Card 2: Variables y Explicación */}
-            <div className="bg-[#f8fafc] p-3 border border-[#e2e8f0] shadow-sm w-full text-left" style={{ borderRadius: '12px' }}>
-              <p className="text-dark-secondary w-full text-left mb-3 leading-relaxed" style={{ fontSize: '12px' }}>
-                Existe una {result.score > 85 ? 'alta' : 'moderada'} posibilidad de excelente aceptación por parte del público en este sector.
-              </p>
-              
-              <h4 className="font-bold mb-3 opacity-90 text-dark-primary text-left" style={{ fontSize: '13px' }}>Variables a favor:</h4>
-              <ul className="space-y-3 w-full" style={{ paddingLeft: 0, marginLeft: 0, listStyle: 'none' }}>
-                {result.reasons.map((reason, idx) => (
-                  <li key={idx} className="flex items-start justify-start gap-2 opacity-90 text-dark-secondary leading-relaxed text-left m-0 p-0" style={{ fontSize: '12px' }}>
-                    <CheckCircle2 size={14} className="mt-[3px] flex-shrink-0" style={{ color: '#47939e' }} strokeWidth={2.5} />
-                    <span className="text-left flex-1">{reason}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-          </div>
-        ) : (
-          <div className="text-center p-4 opacity-70 flex flex-col items-center gap-2" style={{ fontSize: '12px' }}>
-            <Target size={24} className="text-dark-secondary opacity-50" />
-            <p>Selecciona una categoría arriba para iniciar la simulación del modelo de negocio.</p>
-          </div>
-        )}
-      </div>
+    </div>
     </div>
   );
 }

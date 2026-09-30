@@ -48,7 +48,7 @@ body {
 /* Flat UI utility classes (New Concept) */
 .flat-panel {
   background: #ffffff;
-  color: #1e293b;
+  color: #0f172a;
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.08));
   clip-path: polygon(
     24px 0, 
@@ -65,7 +65,7 @@ body {
   border: 1px solid #e2e8f0;
   border-radius: 12px;
   transition: all 0.3s ease;
-  color: #334155;
+  color: #0f172a;
 }
 
 .flat-card:hover {
@@ -92,7 +92,7 @@ body {
 }
 
 .widget-blue {
-  background: #d2f0f4;
+  background: rgba(210, 240, 244, 0.5);
   border-radius: 16px;
   color: #23545b;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
@@ -103,7 +103,7 @@ body {
   border-radius: 3px;
 }
 .widget-blue-bar-fill {
-  background: #47939e;
+  background: #3b82f6;
   height: 100%;
   border-radius: 3px;
 }
@@ -135,7 +135,7 @@ body {
 
 /* Text overrides for flat UI */
 .text-dark-primary { color: #0f172a !important; }
-.text-dark-secondary { color: #64748b !important; }
+.text-dark-secondary { color: #0f172a !important; }
 .border-flat { border-color: #e2e8f0 !important; }
 
 
@@ -159,7 +159,7 @@ body {
 /* Buttons */
 .btn {
   background: #ffffff;
-  color: #1e293b;
+  color: #0f172a;
   border: 1px solid #e2e8f0;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -195,7 +195,7 @@ body {
   width: 100%;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  color: #1e293b;
+  color: #0f172a;
   padding: 0.75rem 1rem;
   border-radius: 8px;
   outline: none;
@@ -207,7 +207,7 @@ body {
 
 select.input option {
   background-color: #ffffff;
-  color: #1e293b;
+  color: #0f172a;
 }
 
 .input:focus {
@@ -277,22 +277,29 @@ select.input option {
 .map-container {
   flex: 1;
   position: relative;
-  background-color: #1e293b;
+  background-color: #0f172a;
   overflow: hidden;
 }
 
 .sidebar {
-  width: 400px;
-  height: 620px;
+  width: 340px;
+  height: max-content;
+  min-height: 400px;
   max-height: calc(100vh - 2rem);
   margin: 1rem;
   position: absolute;
-  right: 0;
+  right: 120px;
   top: 5px;
   display: flex;
   flex-direction: column;
   z-index: 10;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 28px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* React Zoom Pan Pinch Overrides - Viewport Mask */
@@ -306,7 +313,7 @@ select.input option {
   height: auto !important;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: none;
   background-color: transparent;
   cursor: grab;
 }
@@ -419,10 +426,13 @@ select.input option {
   color: var(--text-secondary);
   padding: 0.5rem;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
   transition: color 0.2s;
   font-family: inherit;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 
 .tab-btn:hover {

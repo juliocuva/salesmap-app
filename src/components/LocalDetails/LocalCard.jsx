@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { X, Building, Map, Activity, Store, Maximize2, MapPin, Sun, Eye } from 'lucide-react';
+import { X, Building, Activity, Eye } from 'lucide-react';
 import EnvironmentTab from './Tabs/EnvironmentTab';
-import CommercialExplorerTab from './Tabs/CommercialExplorerTab';
 import CompatibilityTab from './Tabs/CompatibilityTab';
 import LeadForm from '../LeadCapture/LeadForm';
 
@@ -11,15 +10,20 @@ export default function LocalCard({ local, onClose, onShowVision }) {
   if (!local) return null;
 
   return (
-    <div className="sidebar flat-panel animate-fade-in">
+    <div className="sidebar animate-fade-in">
       {/* Header */}
       <div className="p-4 border-b border-flat flex justify-between items-center">
         <div>
           <h2 className="text-lg font-bold text-dark-primary">{local.name}</h2>
           <p className="text-xs text-dark-secondary">
-            {local.area} m² • <span style={{ color: '#47939e', fontWeight: '600' }}>
+            <span style={{ color: '#3b82f6', fontWeight: '600' }}>
               {local.status.charAt(0).toUpperCase() + local.status.slice(1)}
             </span>
+            {local.delivery && (
+              <span className="opacity-70 ml-2 border-l border-gray-300 pl-2 font-medium">
+                Entrega {local.delivery}
+              </span>
+            )}
           </p>
         </div>
         <div className="flex gap-2">
@@ -33,7 +37,7 @@ export default function LocalCard({ local, onClose, onShowVision }) {
               <Eye size={16} /> Render
             </button>
           )}
-          <button onClick={onClose} className="btn" style={{ padding: '0.5rem', color: '#1e293b', border: '1px solid #e2e8f0', background: '#f8fafc', borderRadius: '8px', cursor: 'pointer' }}>
+          <button onClick={onClose} className="btn" style={{ padding: '0.5rem', color: '#ffffff', border: 'none', background: 'rgba(15, 23, 42, 0.5)', borderRadius: '8px', cursor: 'pointer' }}>
             <X size={20} />
           </button>
         </div>
@@ -45,28 +49,20 @@ export default function LocalCard({ local, onClose, onShowVision }) {
           <button 
             className={`tab-btn ${activeTab === 'basic' ? 'active' : ''}`}
             onClick={() => setActiveTab('basic')}
-            style={{ color: activeTab === 'basic' ? '#3b82f6' : '#64748b' }}
-          >
-            Ficha y Entorno
-          </button>
-          <button 
-            className={`tab-btn ${activeTab === 'comercio' ? 'active' : ''}`}
-            onClick={() => setActiveTab('comercio')}
-            style={{ color: activeTab === 'comercio' ? '#3b82f6' : '#64748b' }}
-          >
-            Comercio
-          </button>
+            style={{ color: activeTab === 'basic' ? '#3b82f6' : '#0f172a' }}
+          >Ficha Técnica</button>
+          
           <button 
             className={`tab-btn ${activeTab === 'compatibilidad' ? 'active' : ''}`}
             onClick={() => setActiveTab('compatibilidad')}
-            style={{ color: activeTab === 'compatibilidad' ? '#3b82f6' : '#64748b' }}
+            style={{ color: activeTab === 'compatibilidad' ? '#3b82f6' : '#0f172a' }}
           >
             Afinidad
           </button>
           <button 
             className={`tab-btn ${activeTab === 'contacto' ? 'active' : ''}`}
             onClick={() => setActiveTab('contacto')}
-            style={{ color: activeTab === 'contacto' ? '#3b82f6' : '#64748b' }}
+            style={{ color: activeTab === 'contacto' ? '#3b82f6' : '#0f172a' }}
           >
             Me Interesa
           </button>
@@ -74,79 +70,25 @@ export default function LocalCard({ local, onClose, onShowVision }) {
       </div>
 
       {/* Content Area */}
-      <div className="p-4 pb-8 overflow-y-auto" style={{ flex: 1, minHeight: 0, color: '#334155' }}>
+      <div className="p-4 pb-6 overflow-y-auto" style={{ flex: 1, minHeight: 0, color: '#0f172a' }}>
         {activeTab === 'basic' && (
           <div className="animate-fade-in flex-col gap-3 flex">
             {/* Widgets Container */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="flex flex-col gap-3">
               {/* Blue Widget - Area */}
-              <div className="widget-blue p-3 flex flex-col justify-between" style={{ minHeight: '90px' }}>
-                <div className="flex items-center gap-2 mb-1 text-xs font-semibold opacity-90">
-                  <Building size={14}/> Área Total
+              <div className="widget-blue p-4 flex flex-row justify-between items-center" style={{ minHeight: '60px' }}>
+                <div className="flex items-center gap-2 text-sm font-semibold opacity-90">
+                  <Building size={16}/> Área Total
                 </div>
-                <div className="text-lg font-bold mb-2">{local.area} m²</div>
-                <div className="flex items-center justify-between text-xs mb-1 opacity-80">
-                  <span>Espacio útil</span>
-                  <span>100%</span>
-                </div>
-                <div className="widget-blue-bar">
-                  <div className="widget-blue-bar-fill" style={{ width: '100%' }}></div>
-                </div>
-              </div>
-
-              {/* Blue Widget - Habitantes */}
-              <div className="widget-blue p-3 flex flex-col justify-between" style={{ minHeight: '90px' }}>
-                <div className="flex items-center gap-2 mb-1 text-xs font-semibold opacity-90">
-                  <Activity size={14}/> Habitantes
-                </div>
-                <div className="text-lg font-bold mb-2">18.000</div>
-                <div className="flex items-center justify-between text-xs mb-1 opacity-80">
-                  <span>Radio 1.5km</span>
-                  <span>+12%</span>
-                </div>
-                <div className="widget-blue-bar">
-                  <div className="widget-blue-bar-fill" style={{ width: '78%' }}></div>
-                </div>
+                <div className="text-xl font-bold">{local.area} m²</div>
               </div>
             </div>
-
-            {/* Specifications Details */}
-            <div className="widget-blue p-3">
-              <h3 className="font-semibold mb-2 text-xs opacity-90 flex items-center gap-2">
-                <Store size={14} /> Detalles Físicos
-              </h3>
-              <div className="flex flex-col gap-2">
-                <div className="flex justify-between items-center border-b border-[rgba(0,0,0,0.05)] pb-1">
-                  <div className="flex items-center gap-2 opacity-80 text-xs">
-                    <Maximize2 size={12} />
-                    <span>Frente comercial</span>
-                  </div>
-                  <span className="font-bold text-sm">{local.front} m</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-[rgba(0,0,0,0.05)] pb-1">
-                  <div className="flex items-center gap-2 opacity-80 text-xs">
-                    <MapPin size={12} />
-                    <span>Ubicación</span>
-                  </div>
-                  <span className="font-bold text-sm">{local.corner ? 'Esquina' : 'Pasillo'}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2 opacity-80 text-xs">
-                    <Sun size={12} />
-                    <span>Terraza / Expansión</span>
-                  </div>
-                  <span className="font-bold text-sm">{local.terrace ? 'Sí' : 'No'}</span>
-                </div>
-              </div>
-            </div>
-            
             {/* Contenido de Entorno embebido en Ficha */}
             <EnvironmentTab />
           </div>
         )}
 
-        {activeTab === 'comercio' && <CommercialExplorerTab />}
-        {activeTab === 'compatibilidad' && <CompatibilityTab onShowVision={onShowVision} />}
+        {activeTab === 'compatibilidad' && <CompatibilityTab localArea={local.area} onShowVision={onShowVision} />}
         {activeTab === 'contacto' && <LeadForm localId={local.id} localName={local.name} />}
       </div>
     </div>

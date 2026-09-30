@@ -62,16 +62,16 @@ export default function LeadForm({ localId, localName }) {
   }
 
   return (
-    <div className="bg-white p-2 mt-0" style={{ fontFamily: '"Montserrat", sans-serif', boxSizing: 'border-box', maxWidth: '100%', overflow: 'hidden' }}>
+    <div className="widget-blue p-4 mt-0" style={{ fontFamily: "\"Montserrat\", sans-serif", boxSizing: "border-box", maxWidth: "100%", overflow: "hidden" }}>
       <div className="flex flex-col text-left" style={{ marginBottom: '12px', boxSizing: 'border-box' }}>
-        <p className="text-xs leading-tight font-medium" style={{ color: '#64748b', fontFamily: '"Montserrat", sans-serif' }}>
+        <p className="text-xs leading-tight font-normal opacity-80" style={{ color: '#0f172a', fontFamily: '"Montserrat", sans-serif' }}>
           Para solicitar información detallada o agendar una visita al local, llena este formulario y te contactaremos a la brevedad.
         </p>
       </div>
       
       <form onSubmit={handleSubmit} className="text-left" style={{ display: 'flex', flexDirection: 'column', gap: '8px', boxSizing: 'border-box', width: '100%' }}>
         <div className="flex flex-col gap-1" style={{ boxSizing: 'border-box', width: '100%' }}>
-          <label className="font-bold" style={{ color: '#94a3b8', fontSize: '11px', fontFamily: '"Montserrat", sans-serif' }}>Nombre completo</label>
+          <label className="font-bold" style={{ color: '#0f172a', fontSize: '11px', fontFamily: '"Montserrat", sans-serif' }}>Nombre completo</label>
           <input 
             required 
             type="text" 
@@ -81,11 +81,11 @@ export default function LeadForm({ localId, localName }) {
               boxSizing: 'border-box',
               width: '100%',
               padding: '8px 12px',
-              background: '#f1f5f9',
+              background: 'rgba(255,255,255,0.7)',
               border: '1px solid #e2e8f0',
               borderRadius: '9999px',
               outline: 'none',
-              color: '#334155',
+              color: '#0f172a',
               fontWeight: '500',
               fontSize: '12px',
               fontFamily: '"Montserrat", sans-serif'
@@ -94,7 +94,7 @@ export default function LeadForm({ localId, localName }) {
         </div>
         
         <div className="flex flex-col gap-1" style={{ boxSizing: 'border-box', width: '100%' }}>
-          <label className="font-bold" style={{ color: '#94a3b8', fontSize: '11px', fontFamily: '"Montserrat", sans-serif' }}>Correo o Teléfono</label>
+          <label className="font-bold" style={{ color: '#0f172a', fontSize: '11px', fontFamily: '"Montserrat", sans-serif' }}>Correo o Teléfono</label>
           <input 
             required 
             type="text" 
@@ -104,11 +104,11 @@ export default function LeadForm({ localId, localName }) {
               boxSizing: 'border-box',
               width: '100%',
               padding: '8px 12px',
-              background: '#f1f5f9',
+              background: 'rgba(255,255,255,0.7)',
               border: '1px solid #e2e8f0',
               borderRadius: '9999px',
               outline: 'none',
-              color: '#334155',
+              color: '#0f172a',
               fontWeight: '500',
               fontSize: '12px',
               fontFamily: '"Montserrat", sans-serif'
@@ -117,7 +117,7 @@ export default function LeadForm({ localId, localName }) {
         </div>
         
         <div className="flex flex-col gap-1" style={{ boxSizing: 'border-box', width: '100%' }}>
-          <label className="font-bold" style={{ color: '#94a3b8', fontSize: '11px', fontFamily: '"Montserrat", sans-serif' }}>Idea de Negocio (Opcional)</label>
+          <label className="font-bold" style={{ color: '#0f172a', fontSize: '11px', fontFamily: '"Montserrat", sans-serif' }}>Idea de Negocio (Opcional)</label>
           <textarea 
             placeholder="Escribe tu idea de negocio..."
             rows={2}
@@ -127,11 +127,11 @@ export default function LeadForm({ localId, localName }) {
               boxSizing: 'border-box',
               width: '100%',
               padding: '8px 12px',
-              background: '#f1f5f9',
+              background: 'rgba(255,255,255,0.7)',
               border: '1px solid #e2e8f0',
               borderRadius: '16px',
               outline: 'none',
-              color: '#334155',
+              color: '#0f172a',
               fontWeight: '500',
               fontSize: '12px',
               resize: 'none',
@@ -145,14 +145,14 @@ export default function LeadForm({ localId, localName }) {
           disabled={isSubmitting}
           style={{ 
             boxSizing: 'border-box',
-            background: '#47939e',
-            boxShadow: '0 4px 12px rgba(71, 147, 158, 0.4)',
+            background: '#3b82f6',
+            boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
             border: 'none',
             borderRadius: '9999px',
             color: '#ffffff',
             fontWeight: 'bold',
             padding: '10px 20px',
-            marginTop: '4px',
+            marginTop: '8px', alignSelf: 'center', marginLeft: 'auto', marginRight: 'auto',
             width: 'max-content',
             cursor: 'pointer',
             fontSize: '12px',
