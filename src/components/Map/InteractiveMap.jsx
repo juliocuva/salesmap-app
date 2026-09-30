@@ -78,7 +78,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   };
 
   return (
-    <div className="map-container" style={{ position: 'relative', width: '100vw', height: 'calc(100vh - 100px)', overflow: 'hidden', backgroundColor: '#171717' }}>
+    <div className="map-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#171717' }}>
       {/* Botones de Filtro (Top Center) */}
       <div 
         style={{
