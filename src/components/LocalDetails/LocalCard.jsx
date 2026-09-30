@@ -10,7 +10,7 @@ export default function LocalCard({ local, onClose, onShowVision }) {
   if (!local) return null;
 
   return (
-    <div className="sidebar animate-fade-in">
+    <div className="sidebar animate-fade-in" style={{ backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)" }}>
       {/* Header */}
       <div className="p-4 border-b border-flat flex justify-between items-center">
         <div>
