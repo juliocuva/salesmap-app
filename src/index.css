@@ -92,6 +92,8 @@ body {
 }
 
 .widget-blue {
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   background: rgba(210, 240, 244, 0.5);
   border-radius: 16px;
   color: #23545b;
@@ -295,8 +297,8 @@ select.input option {
   z-index: 10;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
   border-radius: 28px;
   box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.05);
   border: 1px solid rgba(255, 255, 255, 0.6);
