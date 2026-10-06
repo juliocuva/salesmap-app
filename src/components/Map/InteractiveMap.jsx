@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import MapSvgOverlay from './MapSvgOverlay';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Plus, Minus, Search, Home, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Plus, Minus, Search, Home, ChevronLeft, ChevronRight, TrendingUp } from 'lucide-react';
 
 export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMode, onCloseVision, onSelectVision, projectData }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -58,6 +58,37 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   const [filterType, setFilterType] = useState('venta'); // 'todos', 'venta', 'alquiler'
   const [filterDelivery, setFilterDelivery] = useState('todos'); // 'todos', '2026', '2027-1', '2027-2'
 
+  // Estados para el banner promocional
+  const [showPromo, setShowPromo] = useState(false);
+  const [hasShownPromo, setHasShownPromo] = useState(false);
+  const mapContainerRef = useRef(null);
+
+  // Efecto para detectar cuando el iframe entra en pantalla (scroll)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasShownPromo) {
+          setHasShownPromo(true);
+          // Esperamos medio segundo antes de mostrarlo para que sea natural
+          setTimeout(() => {
+            setShowPromo(true);
+            // Lo ocultamos después de 6 segundos (tiempo de lectura)
+            setTimeout(() => {
+              setShowPromo(false);
+            }, 6000);
+          }, 500);
+        }
+      },
+      { threshold: 0.3 } // Se activa cuando se ve al menos el 30% del mapa
+    );
+
+    if (mapContainerRef.current) {
+      observer.observe(mapContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasShownPromo]);
+
   // Definir imágenes de fondo por piso
     const getBackgroundImage = () => {
     if (!projectData) return '';
@@ -78,7 +109,19 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   };
 
   return (
-    <div className="map-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#171717' }}>
+    <div ref={mapContainerRef} className="map-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#171717' }}>
+      {/* Banner Promocional Flotante */}
+      <div 
+        className={`absolute top-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-1000 ease-in-out ${showPromo ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+      >
+        <div className="bg-[#0f172a]/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-2xl flex items-center gap-3">
+          <TrendingUp className="w-5 h-5 text-blue-400" />
+          <span className="text-white font-semibold tracking-wide text-sm md:text-base uppercase">
+            Locales con alta proyección de inversión
+          </span>
+        </div>
+      </div>
+
       {/* Botones de Filtro (Top Center) */}
       <div 
         style={{
