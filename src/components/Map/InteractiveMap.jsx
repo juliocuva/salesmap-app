@@ -119,9 +119,9 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
           pointerEvents: showPromo ? 'auto' : 'none'
         }}
       >
-        <div className="bg-[#0f172a]/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-2xl flex items-center gap-3">
-          <TrendingUp className="w-5 h-5 text-blue-400" />
-          <span className="text-white font-semibold tracking-wide text-sm md:text-base uppercase">
+        <div className="bg-[#0f172a]/80 backdrop-blur-md px-10 py-5 rounded-full border border-white/20 shadow-2xl flex items-center gap-5">
+          <TrendingUp className="w-8 h-8 text-blue-400" />
+          <span className="text-white font-bold tracking-wider text-lg md:text-xl uppercase">
             Locales con alta proyección de inversión
           </span>
         </div>
