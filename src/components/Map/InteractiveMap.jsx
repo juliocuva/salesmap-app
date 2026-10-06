@@ -55,7 +55,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
   const images = getImages();
 
   const [currentFloor, setCurrentFloor] = useState('piso_1');
-  const [filterType, setFilterType] = useState('todos'); // 'todos', 'venta', 'alquiler'
+  const [filterType, setFilterType] = useState('venta'); // 'todos', 'venta', 'alquiler'
   const [filterDelivery, setFilterDelivery] = useState('todos'); // 'todos', '2026', '2027-1', '2027-2'
 
   // Definir imágenes de fondo por piso
