@@ -112,7 +112,12 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
     <div ref={mapContainerRef} className="map-container" style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden', backgroundColor: '#171717' }}>
       {/* Banner Promocional Flotante */}
       <div 
-        className={`absolute top-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-1000 ease-in-out ${showPromo ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+        className={`absolute top-1/2 left-1/2 z-50 transition-all duration-1000 ease-in-out`}
+        style={{
+          transform: showPromo ? 'translate(-50%, -50%)' : 'translate(-50%, -40%)',
+          opacity: showPromo ? 1 : 0,
+          pointerEvents: showPromo ? 'auto' : 'none'
+        }}
       >
         <div className="bg-[#0f172a]/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 shadow-2xl flex items-center gap-3">
           <TrendingUp className="w-5 h-5 text-blue-400" />
