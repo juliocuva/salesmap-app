@@ -3,6 +3,7 @@ import { svgPaths } from '../../projects/bahiaguacamayas/svgPaths';
 
 const areas = svgPaths.piso_1;
 
+
 export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData, zoomToElement, currentFloor = 'piso_1', filterType = 'todos', filterDelivery = 'todos', onSelectVision }) {
   return (
     <svg 
@@ -77,6 +78,19 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
             }}
           >
             <path d={area.d} />
+            
+            {/* Lógica del Logo del Cliente */}
+            {localInfo && localInfo.logo && (
+              <image 
+                href={localInfo.logo}
+                x={getPathCenter(area.d).x - 35}
+                y={getPathCenter(area.d).y - 35}
+                width="70"
+                height="70"
+                style={{ pointerEvents: 'none', filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.3))' }}
+                preserveAspectRatio="xMidYMid meet"
+              />
+            )}
           </g>
         );
       })}

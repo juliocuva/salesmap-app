@@ -4,7 +4,7 @@ export const mockLocals = [
   { id: "local_9c", name: "Local 9C", area: 26.10, price: 548100000, status: "disponible", delivery: "2026" },
   { id: "local_9b", name: "Local 9B", area: 26.30, price: 552300000, status: "disponible", delivery: "2026" },
   { id: "local_27", name: "Local 27", area: 50.00, price: 1000000000, status: "disponible", delivery: "2027-1" },
-  { id: "local_46", name: "Local 46", area: 122.92, price: 2581320000, status: "vendido", delivery: "2026" },
+  { id: "local_46", name: "Local 46", area: 122.92, price: 2581320000, status: "disponible", delivery: "2026" },
   
   { id: "local_43", name: "Local 43", area: 65.10, price: 1367100000, status: "disponible", delivery: "2027-1" },
   { id: "local_41", name: "Local 41", area: 65.14, price: 1367940000, status: "disponible", delivery: "2027-1" },
@@ -21,7 +21,7 @@ export const mockLocals = [
   { id: "local_30B", name: "Local 30B", area: 24.87, price: 522270000, status: "disponible", delivery: "2027-2" },
   { id: "local_30A", name: "Local 30A", area: 24.87, price: 522270000, status: "disponible", delivery: "2027-2" },
   { id: "local_30a", name: "Local 30a", area: 24.87, price: 522270000, status: "vendido", delivery: "2027-2" },
-  { id: "local_29A", name: "Local 29A", area: 83.42, price: 1751820000, status: "disponible", delivery: "2027-2" },
+  { id: "local_29A", name: "Local 29A", area: 83.42, price: 1751820000, status: "vendido", delivery: "2027-2" },
   
   { id: "l_9", name: "Local 9 (Etapa 2)", area: 15.00, price: null, status: "vendido", delivery: "2027-2" },
   { id: "l_10", name: "Local 10 (Etapa 2)", area: 30.56, price: null, status: "alquiler", delivery: "2027-2" },
