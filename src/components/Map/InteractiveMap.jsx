@@ -333,7 +333,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                   <img 
                     src="/plano de ventas-clientes.svg" 
                     alt="Logos de Clientes"
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 20, opacity: 0.85 }}
+                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 20, opacity: 0.5 }}
                   />
 
               </div>
