@@ -128,21 +128,22 @@ function getPathCenter(d) {
   const centerX = Math.abs(area) > 1e-5 ? gx / (6 * area) : (minX + maxX) / 2;
   const centerY = Math.abs(area) > 1e-5 ? gy / (6 * area) : (minY + maxY) / 2;
 
-  // Buscar el vértice real más cercano a la esquina superior derecha (mayor X, menor Y)
-  let topRightVert = pts[0];
-  let bestScore = -Infinity;
+  // Buscar el vértice superior (menor Y) para que en polígonos rotados a 45° no salte al vértice derecho inferior
+  let topVert = pts[0];
+  let bestScore = Infinity;
   for (const p of pts) {
-    const score = p.x - p.y;
-    if (score > bestScore) {
+    // Priorizamos fuertemente estar arriba (menor Y) y ligeramente hacia la derecha (mayor X)
+    const score = p.y - p.x * 0.25;
+    if (score < bestScore) {
       bestScore = score;
-      topRightVert = p;
+      topVert = p;
     }
   }
 
-  // Interpolar desde el centro hacia la esquina superior derecha (62% hacia el vértice) para que quede adentro sin salirse del borde
+  // Interpolar desde el centro hacia la esquina superior (58% hacia el vértice) para que todos queden uniformes arriba como en L47a
   return {
-    x: centerX + (topRightVert.x - centerX) * 0.62,
-    y: centerY + (topRightVert.y - centerY) * 0.62
+    x: centerX + (topVert.x - centerX) * 0.58,
+    y: centerY + (topVert.y - centerY) * 0.58
   };
 }
 
