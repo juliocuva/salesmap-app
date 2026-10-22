@@ -131,13 +131,15 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
       <div 
         style={{
           position: 'absolute',
-          top: '32px',
+          top: '12px',
           left: '50%',
           transform: 'translateX(-50%)',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           alignItems: 'center',
-          gap: '12px',
+          justifyContent: 'center',
+          flexWrap: 'nowrap',
+          gap: '10px',
           zIndex: 9999
         }}
       >
