@@ -212,17 +212,22 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
             {localInfo && (localInfo.logo || localInfo.status === 'vendido') && !area.id.startsWith('local_sotano') && (() => {
               const center = getPathCenter(area.d);
               const iconHref = localInfo.logo || '/icono-vendido.svg';
-              const iconSize = 46;
+              const iconSize = 40;
               return (
-                <image 
-                  href={iconHref}
-                  x={center.x - iconSize / 2}
-                  y={center.y - iconSize / 2}
-                  width={iconSize}
-                  height={iconSize}
-                  style={{ pointerEvents: 'none', filter: 'drop-shadow(0px 3px 5px rgba(0,0,0,0.35))' }}
-                  preserveAspectRatio="xMidYMid meet"
-                />
+                <g className="sold-icon-wrapper" style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
+                  {/* Polígono invisible del local completo para que al pasar el mouse por cualquier parte del local desaparezca el ícono */}
+                  <path d={area.d} fill="transparent" stroke="none" />
+                  <image 
+                    href={iconHref}
+                    x={center.x - iconSize / 2}
+                    y={center.y - iconSize / 2}
+                    width={iconSize}
+                    height={iconSize}
+                    className="sold-icon-img"
+                    style={{ filter: 'drop-shadow(0px 3px 5px rgba(0,0,0,0.35))' }}
+                    preserveAspectRatio="xMidYMid meet"
+                  />
+                </g>
               );
             })()}
           </React.Fragment>

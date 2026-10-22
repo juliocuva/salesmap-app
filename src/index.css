@@ -396,6 +396,20 @@ select.input option {
   pointer-events: none;
 }
 
+/* Ícono de local vendido: se oculta suavemente al pasar el mouse para dejar leer la info del plano */
+.sold-icon-wrapper .sold-icon-img {
+  opacity: 0.92;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.sold-icon-wrapper:hover .sold-icon-img {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
 .local-polygon.upcoming {
   opacity: 0;
   pointer-events: none;
