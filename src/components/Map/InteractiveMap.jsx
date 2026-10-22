@@ -383,6 +383,27 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                 }}
               />
             ))}
+
+            {/* Footer legal / aviso ilustrativo */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.6) 70%, transparent 100%)',
+                color: 'rgba(255, 255, 255, 0.9)',
+                padding: '22px 16px 8px 16px',
+                fontSize: '10px',
+                lineHeight: '1.35',
+                textAlign: 'center',
+                zIndex: 8,
+                pointerEvents: 'none',
+                letterSpacing: '0.01em'
+              }}
+            >
+              Imagen ilustrativa de referencia. El diseño, los acabados, el mobiliario y demás elementos representados pueden variar respecto al producto final. Aplican las especificaciones técnicas y condiciones contractuales del proyecto.
+            </div>
           </div>
           
           {images.length > 1 && (
@@ -441,7 +462,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
               <div 
                 style={{
                   position: 'absolute',
-                  bottom: '20px',
+                  bottom: '46px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   display: 'flex',
