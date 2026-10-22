@@ -114,7 +114,7 @@ function getPathCenter(d) {
 
   if (pts.length === 0) return { x: 0, y: 0 };
 
-  // Centroide de área poligonal (Shoelace formula) para que quede exactamente en el centro visual del polígono
+  // Centroide de área poligonal (Shoelace formula)
   let area = 0, gx = 0, gy = 0;
   for (let i = 0; i < pts.length; i++) {
     const p1 = pts[i];
@@ -125,11 +125,25 @@ function getPathCenter(d) {
     gy += (p1.y + p2.y) * cross;
   }
   area *= 0.5;
-  if (Math.abs(area) > 1e-5) {
-    return { x: gx / (6 * area), y: gy / (6 * area) };
+  const centerX = Math.abs(area) > 1e-5 ? gx / (6 * area) : (minX + maxX) / 2;
+  const centerY = Math.abs(area) > 1e-5 ? gy / (6 * area) : (minY + maxY) / 2;
+
+  // Buscar el vértice real más cercano a la esquina superior derecha (mayor X, menor Y)
+  let topRightVert = pts[0];
+  let bestScore = -Infinity;
+  for (const p of pts) {
+    const score = p.x - p.y;
+    if (score > bestScore) {
+      bestScore = score;
+      topRightVert = p;
+    }
   }
 
-  return { x: (minX + maxX) / 2, y: (minY + maxY) / 2 };
+  // Interpolar desde el centro hacia la esquina superior derecha (62% hacia el vértice) para que quede adentro sin salirse del borde
+  return {
+    x: centerX + (topRightVert.x - centerX) * 0.62,
+    y: centerY + (topRightVert.y - centerY) * 0.62
+  };
 }
 
 export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData, zoomToElement, currentFloor = 'piso_1', filterType = 'todos', filterDelivery = 'todos', onSelectVision }) {
@@ -212,7 +226,7 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
             {localInfo && (localInfo.logo || localInfo.status === 'vendido') && !area.id.startsWith('local_sotano') && (() => {
               const center = getPathCenter(area.d);
               const iconHref = localInfo.logo || '/icono-vendido.svg';
-              const iconSize = 40;
+              const iconSize = 30;
               return (
                 <g className="sold-icon-wrapper" style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
                   {/* Polígono invisible del local completo para que al pasar el mouse por cualquier parte del local desaparezca el ícono */}
