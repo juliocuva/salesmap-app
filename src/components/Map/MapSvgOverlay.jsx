@@ -100,29 +100,30 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
         if (isFaded) statusClass += ' faded';
 
         return (
-          <g 
-            key={area.id} 
-            id={area.id}
-            className={`local-polygon pointer-events-auto cursor-pointer transition-all duration-300 ${statusClass} ${isSelected ? 'selected' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();
-              
-              if (localInfo && localInfo.status !== 'vendido') {
-                onSelectLocal(localInfo);
+          <React.Fragment key={area.id}>
+            <g 
+              id={area.id}
+              className={`local-polygon pointer-events-auto cursor-pointer transition-all duration-300 ${statusClass} ${isSelected ? 'selected' : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
                 
-                // Hacemos el zoom de forma segura, capturando cualquier error interno de la librerÃ­a
-                if (zoomToElement) {
-                  try {
-                    zoomToElement(area.id, 2.5, 400);
-                  } catch (err) {
-                    console.error("Zoom failed", err);
+                if (localInfo && localInfo.status !== 'vendido') {
+                  onSelectLocal(localInfo);
+                  
+                  // Hacemos el zoom de forma segura, capturando cualquier error interno de la librería
+                  if (zoomToElement) {
+                    try {
+                      zoomToElement(area.id, 2.5, 400);
+                    } catch (err) {
+                      console.error("Zoom failed", err);
+                    }
                   }
                 }
-              }
-            }}
-          >
-            <path d={area.d} />
+              }}
+            >
+              <path d={area.d} />
+            </g>
             
             {/* Ícono automático para locales vendidos o con logo personalizado */}
             {localInfo && (localInfo.logo || localInfo.status === 'vendido') && !area.id.startsWith('local_sotano') && (() => {
@@ -140,7 +141,7 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
                 />
               );
             })()}
-          </g>
+          </React.Fragment>
         );
       })}
       {/* CÃ¡maras interactivas */}
