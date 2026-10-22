@@ -3,6 +3,51 @@ import { svgPaths } from '../../projects/bahiaguacamayas/svgPaths';
 
 const areas = svgPaths.piso_1;
 
+// Calcula el centro geométrico aproximado (bounding box) de un path SVG
+function getPathCenter(d) {
+  if (!d) return { x: 0, y: 0 };
+  const commands = d.match(/[a-df-z][^a-df-z]*/ig) || [];
+  let cx = 0, cy = 0;
+  let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+
+  const addPoint = (x, y) => {
+    if (!isNaN(x) && !isNaN(y)) {
+      if (x < minX) minX = x;
+      if (x > maxX) maxX = x;
+      if (y < minY) minY = y;
+      if (y > maxY) maxY = y;
+    }
+  };
+
+  for (const cmd of commands) {
+    const type = cmd[0];
+    const nums = (cmd.slice(1).match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
+    if (type === 'M' || type === 'L') {
+      for (let i = 0; i < nums.length; i += 2) {
+        cx = nums[i];
+        cy = nums[i + 1];
+        addPoint(cx, cy);
+      }
+    } else if (type === 'm' || type === 'l') {
+      for (let i = 0; i < nums.length; i += 2) {
+        cx += nums[i];
+        cy += nums[i + 1];
+        addPoint(cx, cy);
+      }
+    } else if (type === 'H') {
+      for (const n of nums) { cx = n; addPoint(cx, cy); }
+    } else if (type === 'h') {
+      for (const n of nums) { cx += n; addPoint(cx, cy); }
+    } else if (type === 'V') {
+      for (const n of nums) { cy = n; addPoint(cx, cy); }
+    } else if (type === 'v') {
+      for (const n of nums) { cy += n; addPoint(cx, cy); }
+    }
+  }
+
+  if (minX === Infinity) return { x: 0, y: 0 };
+  return { x: (minX + maxX) / 2, y: (minY + maxY) / 2 };
+}
 
 export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData, zoomToElement, currentFloor = 'piso_1', filterType = 'todos', filterDelivery = 'todos', onSelectVision }) {
   return (
@@ -79,18 +124,22 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
           >
             <path d={area.d} />
             
-            {/* Lógica del Logo del Cliente */}
-            {localInfo && localInfo.logo && (
-              <image 
-                href={localInfo.logo}
-                x={getPathCenter(area.d).x - 35}
-                y={getPathCenter(area.d).y - 35}
-                width="70"
-                height="70"
-                style={{ pointerEvents: 'none', filter: 'drop-shadow(0px 4px 4px rgba(0,0,0,0.3))' }}
-                preserveAspectRatio="xMidYMid meet"
-              />
-            )}
+            {/* Ícono automático para locales vendidos o con logo personalizado */}
+            {localInfo && (localInfo.logo || localInfo.status === 'vendido') && !area.id.startsWith('local_sotano') && (() => {
+              const center = getPathCenter(area.d);
+              const iconHref = localInfo.logo || '/icono-vendido.svg';
+              return (
+                <image 
+                  href={iconHref}
+                  x={center.x - 30}
+                  y={center.y - 30}
+                  width="60"
+                  height="60"
+                  style={{ pointerEvents: 'none', filter: 'drop-shadow(0px 3px 5px rgba(0,0,0,0.35))' }}
+                  preserveAspectRatio="xMidYMid meet"
+                />
+              );
+            })()}
           </g>
         );
       })}

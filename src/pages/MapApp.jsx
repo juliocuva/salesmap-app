@@ -31,7 +31,8 @@ function MapApp() {
               area: parseFloat(row.area) || 0,
               price: (row.precio || row.price) ? parseInt(row.precio || row.price) : null,
               status: (row.estado || row.status) ? String(row.estado || row.status).toLowerCase().trim() : 'disponible',
-              delivery: (row.entrega || row.delivery) ? String(row.entrega || row.delivery).trim() : ''
+              delivery: (row.entrega || row.delivery) ? String(row.entrega || row.delivery).trim() : '',
+              logo: (row.logo || row.icono || row.icon) ? String(row.logo || row.icono || row.icon).trim() : null
             }));
           
           setProjectData({ ...activeProject, data: sheetData });
