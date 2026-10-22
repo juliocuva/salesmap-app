@@ -227,7 +227,7 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
             {localInfo && (localInfo.logo || localInfo.status === 'vendido') && !area.id.startsWith('local_sotano') && (() => {
               const center = getPathCenter(area.d);
               const iconHref = localInfo.logo || '/icono-vendido.svg';
-              const iconSize = 30;
+              const iconSize = 20;
               return (
                 <g className="sold-icon-wrapper" style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
                   {/* Polígono invisible del local completo para que al pasar el mouse por cualquier parte del local desaparezca el ícono */}
