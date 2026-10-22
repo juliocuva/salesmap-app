@@ -3,12 +3,13 @@ import { svgPaths } from '../../projects/bahiaguacamayas/svgPaths';
 
 const areas = svgPaths.piso_1;
 
-// Calcula el centro geométrico aproximado (bounding box) de un path SVG
+// Calcula el centro geométrico exacto de cualquier path SVG interpretando todos los comandos (incluyendo curvas c/C/s/S)
 function getPathCenter(d) {
   if (!d) return { x: 0, y: 0 };
   const commands = d.match(/[a-df-z][^a-df-z]*/ig) || [];
-  let cx = 0, cy = 0;
+  let cx = 0, cy = 0, startX = 0, startY = 0;
   let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+  const pts = [];
 
   const addPoint = (x, y) => {
     if (!isNaN(x) && !isNaN(y)) {
@@ -16,36 +17,118 @@ function getPathCenter(d) {
       if (x > maxX) maxX = x;
       if (y < minY) minY = y;
       if (y > maxY) maxY = y;
+      pts.push({ x, y });
     }
   };
 
   for (const cmd of commands) {
     const type = cmd[0];
-    const nums = (cmd.slice(1).match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
-    if (type === 'M' || type === 'L') {
-      for (let i = 0; i < nums.length; i += 2) {
-        cx = nums[i];
-        cy = nums[i + 1];
-        addPoint(cx, cy);
-      }
-    } else if (type === 'm' || type === 'l') {
-      for (let i = 0; i < nums.length; i += 2) {
-        cx += nums[i];
-        cy += nums[i + 1];
-        addPoint(cx, cy);
-      }
-    } else if (type === 'H') {
-      for (const n of nums) { cx = n; addPoint(cx, cy); }
-    } else if (type === 'h') {
-      for (const n of nums) { cx += n; addPoint(cx, cy); }
-    } else if (type === 'V') {
-      for (const n of nums) { cy = n; addPoint(cx, cy); }
-    } else if (type === 'v') {
-      for (const n of nums) { cy += n; addPoint(cx, cy); }
+    const nums = (cmd.slice(1).match(/-?\d*\.?\d+/g) || []).map(Number);
+    switch (type) {
+      case 'M':
+        for (let i = 0; i < nums.length; i += 2) {
+          cx = nums[i]; cy = nums[i + 1];
+          if (i === 0) { startX = cx; startY = cy; }
+          addPoint(cx, cy);
+        }
+        break;
+      case 'm':
+        for (let i = 0; i < nums.length; i += 2) {
+          cx += nums[i]; cy += nums[i + 1];
+          if (i === 0) { startX = cx; startY = cy; }
+          addPoint(cx, cy);
+        }
+        break;
+      case 'L':
+      case 'T':
+        for (let i = 0; i < nums.length; i += 2) {
+          cx = nums[i]; cy = nums[i + 1];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'l':
+      case 't':
+        for (let i = 0; i < nums.length; i += 2) {
+          cx += nums[i]; cy += nums[i + 1];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'H':
+        for (const n of nums) { cx = n; addPoint(cx, cy); }
+        break;
+      case 'h':
+        for (const n of nums) { cx += n; addPoint(cx, cy); }
+        break;
+      case 'V':
+        for (const n of nums) { cy = n; addPoint(cx, cy); }
+        break;
+      case 'v':
+        for (const n of nums) { cy += n; addPoint(cx, cy); }
+        break;
+      case 'C':
+        for (let i = 0; i < nums.length; i += 6) {
+          cx = nums[i + 4]; cy = nums[i + 5];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'c':
+        for (let i = 0; i < nums.length; i += 6) {
+          cx += nums[i + 4]; cy += nums[i + 5];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'S':
+      case 'Q':
+        for (let i = 0; i < nums.length; i += 4) {
+          cx = nums[i + 2]; cy = nums[i + 3];
+          addPoint(cx, cy);
+        }
+        break;
+      case 's':
+      case 'q':
+        for (let i = 0; i < nums.length; i += 4) {
+          cx += nums[i + 2]; cy += nums[i + 3];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'A':
+        for (let i = 0; i < nums.length; i += 7) {
+          cx = nums[i + 5]; cy = nums[i + 6];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'a':
+        for (let i = 0; i < nums.length; i += 7) {
+          cx += nums[i + 5]; cy += nums[i + 6];
+          addPoint(cx, cy);
+        }
+        break;
+      case 'Z':
+      case 'z':
+        cx = startX; cy = startY;
+        break;
+      default:
+        break;
     }
   }
 
-  if (minX === Infinity) return { x: 0, y: 0 };
+  if (pts.length === 0) return { x: 0, y: 0 };
+
+  // Centroide de área poligonal (Shoelace formula) para que quede exactamente en el centro visual del polígono
+  let area = 0, gx = 0, gy = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const p1 = pts[i];
+    const p2 = pts[(i + 1) % pts.length];
+    const cross = p1.x * p2.y - p2.x * p1.y;
+    area += cross;
+    gx += (p1.x + p2.x) * cross;
+    gy += (p1.y + p2.y) * cross;
+  }
+  area *= 0.5;
+  if (Math.abs(area) > 1e-5) {
+    return { x: gx / (6 * area), y: gy / (6 * area) };
+  }
+
   return { x: (minX + maxX) / 2, y: (minY + maxY) / 2 };
 }
 
@@ -129,13 +212,14 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
             {localInfo && (localInfo.logo || localInfo.status === 'vendido') && !area.id.startsWith('local_sotano') && (() => {
               const center = getPathCenter(area.d);
               const iconHref = localInfo.logo || '/icono-vendido.svg';
+              const iconSize = 46;
               return (
                 <image 
                   href={iconHref}
-                  x={center.x - 30}
-                  y={center.y - 30}
-                  width="60"
-                  height="60"
+                  x={center.x - iconSize / 2}
+                  y={center.y - iconSize / 2}
+                  width={iconSize}
+                  height={iconSize}
                   style={{ pointerEvents: 'none', filter: 'drop-shadow(0px 3px 5px rgba(0,0,0,0.35))' }}
                   preserveAspectRatio="xMidYMid meet"
                 />
