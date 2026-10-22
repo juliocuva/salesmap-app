@@ -230,8 +230,12 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
               const iconSize = 20;
               return (
                 <g className="sold-icon-wrapper" style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
-                  {/* Polígono invisible del local completo para que al pasar el mouse por cualquier parte del local desaparezca el ícono */}
-                  <path d={area.d} fill="transparent" stroke="none" />
+                  {/* Polígono del local (para local_2a lleva fondo tenue beige igual a L2) */}
+                  <path 
+                    d={area.d} 
+                    fill={area.id === 'local_2a' ? 'rgba(232, 224, 206, 0.72)' : 'transparent'} 
+                    stroke="none" 
+                  />
                   <image 
                     href={iconHref}
                     x={center.x - iconSize / 2}
