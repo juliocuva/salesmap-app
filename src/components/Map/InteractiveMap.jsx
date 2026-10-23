@@ -119,7 +119,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
           pointerEvents: showPromo ? 'auto' : 'none'
         }}
       >
-        <div className="bg-[#0f172a]/80 backdrop-blur-md px-10 py-5 rounded-full border border-white/20 shadow-2xl flex items-center gap-5">
+        <div className="bg-[#0f172a]/80 backdrop-blur-md px-10 py-5 rounded-full border border-white/20  flex items-center gap-5">
           <TrendingUp className="w-8 h-8 text-blue-400" />
           <span className="text-white font-bold tracking-wider text-lg md:text-xl uppercase">
             Locales con alta proyección de inversión
@@ -144,7 +144,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
         }}
       >
         <div style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.45)',
-                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
+                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
             <button 
               onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
             style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
@@ -167,7 +167,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
         
         {filterType === 'venta' && (
           <div className="animate-fade-in" style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.45)',
-                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', boxShadow: '0 8px 32px rgba(0,0,0,0.08)', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
+                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
               <button 
                 onClick={() => setFilterDelivery('todos')} 
               style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#0f172a', transition: 'all 0.2s ease' }}
@@ -227,7 +227,6 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
               cursor: 'pointer', 
               fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px',
               transition: 'all 0.3s ease', 
-              boxShadow: currentFloor === floor.id ? '0 4px 15px rgba(59, 130, 246, 0.4)' : '0 4px 15px rgba(0,0,0,0.08)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)'
             }}
@@ -263,7 +262,6 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                 WebkitBackdropFilter: 'blur(24px)',
                 padding: '8px',
                 borderRadius: '30px',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
               }}
             >
@@ -346,7 +344,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
 
       {visionMode && (
         <div 
-          className="pointer-events-auto shadow-[0_0_100px_rgba(0,0,0,0.8)]"
+          className="pointer-events-auto "
           style={{ 
             position: 'absolute', 
             top: '50%', 
@@ -427,7 +425,6 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                   justifyContent: 'center',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
                   color: '#1e293b',
                   zIndex: 10
                 }}
@@ -452,7 +449,6 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                   justifyContent: 'center',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
                   color: '#1e293b',
                   zIndex: 10
                 }}
@@ -480,7 +476,6 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                       height: '10px',
                       borderRadius: '50%',
                       background: currentImageIndex === idx ? 'white' : 'rgba(255,255,255,0.4)',
-                      boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
                       transition: 'all 0.3s ease'
                     }}
                   />
@@ -491,7 +486,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
 
           <button 
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); onCloseVision(); }}
-            className="absolute bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center cursor-pointer shadow-2xl transition-transform hover:scale-110"
+            className="absolute bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center cursor-pointer  transition-transform hover:scale-110"
             style={{ width: '32px', height: '32px', top: '-20px', right: '-20px', border: '3px solid white', zIndex: 10 }}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
