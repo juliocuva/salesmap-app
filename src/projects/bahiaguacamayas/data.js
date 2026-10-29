@@ -13,15 +13,9 @@ export const localsData = [
   { id: "local_24a", name: "Local 24A", area: 22.86, price: 480060000, status: "disponible", delivery: "2027-1" },
   { id: "local_24b", name: "Local 24B", area: 25.88, price: 543480000, status: "disponible", delivery: "2027-1" },
   
-  { id: "local_31A", name: "Local 31A", area: 17.31, price: 363510000, status: "disponible", delivery: "2027-2" },
-  { id: "local_31B", name: "Local 31B", area: 35.89, price: 753690000, status: "disponible", delivery: "2027-2" },
-  { id: "local_31", name: "Local 31", area: 195.80, price: 4111800000, status: "disponible", delivery: "2027-2" },
-  { id: "local_30", name: "Local 30", area: 24.56, price: 515760000, status: "disponible", delivery: "2027-2" },
-  { id: "local_30C", name: "Local 30C", area: 24.87, price: 522270000, status: "disponible", delivery: "2027-2" },
-  { id: "local_30B", name: "Local 30B", area: 24.87, price: 522270000, status: "disponible", delivery: "2027-2" },
-  { id: "local_30A", name: "Local 30A", area: 24.87, price: 522270000, status: "disponible", delivery: "2027-2" },
-  { id: "local_30a", name: "Local 30a", area: 24.87, price: 522270000, status: "vendido", delivery: "2027-2" },
-  { id: "local_29A", name: "Local 29A", area: 83.42, price: 1751820000, status: "disponible", delivery: "2027-2" },
+  { id: "local_31", name: "Local 31", area: 500.63, price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_30", name: "Local 30", area: 40.00, price: null, status: "disponible", delivery: "2027-2" },
+  { id: "local_29", name: "Local 29", area: 62.51, price: null, status: "disponible", delivery: "2027-2" },
   
   { id: "l_9", name: "Local 9 (Etapa 2)", area: 15.00, price: null, status: "vendido", delivery: "2027-2" },
   { id: "l_10", name: "Local 10 (Etapa 2)", area: 30.56, price: null, status: "alquiler", delivery: "2027-2" },
@@ -69,7 +63,6 @@ export const localsData = [
   { id: "local_23",  name: "Local 23",  area: 26.71,  price: null, status: "disponible", delivery: "2027-1" },
   { id: "local_26",  name: "Local 26",  area: 52.00,  price: null, status: "disponible", delivery: "2027-2" },
   { id: "local_28",  name: "Local 28",  area: 67.00,  price: null, status: "disponible", delivery: "2027-1" },
-  { id: "local_29",  name: "Local 29",  area: 33.00,  price: null, status: "disponible", delivery: "2027-2" },
   { id: "local_44",  name: "Local 44",  area: 31.98,  price: null, status: "disponible", delivery: "2027-1" },
   { id: "local_45",  name: "Local 45",  area: 31.78,  price: null, status: "disponible", delivery: "2027-1" },
   { id: "local_46a", name: "Local 46A", area: 31.06,  price: null, status: "disponible", delivery: "2027-1" }
