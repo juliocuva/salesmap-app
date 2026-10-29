@@ -183,6 +183,10 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
           if (localInfo?.status !== 'alquiler') {
             isFaded = true;
           }
+        } else if (filterType === 'vendido') {
+          if (localInfo?.status !== 'vendido') {
+            isFaded = true;
+          }
         }
 
         let statusClass = 'upcoming';
@@ -228,8 +232,17 @@ export default function MapSvgOverlay({ selectedLocal, onSelectLocal, localsData
               const center = getPathCenter(area.d);
               const iconHref = localInfo.logo || '/icono-vendido.svg';
               const iconSize = 20;
+              const isIconFaded = isFaded;
               return (
-                <g className="sold-icon-wrapper" style={{ pointerEvents: 'auto', cursor: 'pointer' }}>
+                <g 
+                  className="sold-icon-wrapper" 
+                  style={{ 
+                    pointerEvents: isIconFaded ? 'none' : 'auto', 
+                    cursor: 'pointer',
+                    opacity: isIconFaded ? 0.15 : 1,
+                    transition: 'opacity 0.3s ease'
+                  }}
+                >
                   {/* Polígono del local (para local_2a lleva fondo tenue beige igual a L2) */}
                   <path 
                     d={area.d} 

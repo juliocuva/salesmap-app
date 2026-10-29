@@ -163,6 +163,12 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
           >
             En Alquiler
           </button>
+          <button 
+            onClick={() => { setFilterType('vendido'); setFilterDelivery('todos'); }} 
+            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'vendido' ? '#ef4444' : 'transparent', color: filterType === 'vendido' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+          >
+            Vendido
+          </button>
         </div>
         
         {filterType === 'venta' && (
