@@ -9,7 +9,7 @@ export const config = {
   id: 'bahiaguacamayas',
   name: 'Bahía Guacamayas',
   client: 'Constructora Default',
-  sheetUrl: 'https://docs.google.com/spreadsheets/d/1iQEP5NKzqN_rZZ83CzPX0b3ez2o8J6bIoPB4ZyDu1aU/export?format=csv',
+  sheetUrl: 'https://docs.google.com/spreadsheets/d/1iQEP5NKzqN_rZZ83CzPX0b3ez2o8J6bIoPB4ZyDu1aU/gviz/tq?tqx=out:csv',
   floors: [
     { id: 'piso_1',   label: 'Primer Piso', bgImage: '/plano.png' },
     { id: 'sotano_1', label: 'Sótano 1',   bgImage: a('14 de agosto_Planta Sotano 01  N -3.65 mts.webp') },
