@@ -144,7 +144,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
         }}
       >
         <div style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.45)',
-                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
+                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', }}>
             <button 
               onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
             style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
@@ -173,7 +173,7 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
         
         {filterType === 'venta' && (
           <div className="animate-fade-in" style={{ display: 'flex', gap: '4px', background: 'rgba(255, 255, 255, 0.45)',
-                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', border: '1px solid rgba(255, 255, 255, 0.4)' }}>
+                  backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', }}>
               <button 
                 onClick={() => setFilterDelivery('todos')} 
               style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#0f172a', transition: 'all 0.2s ease' }}
