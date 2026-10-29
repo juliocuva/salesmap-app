@@ -147,25 +147,25 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                   backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', }}>
             <button 
               onClick={() => { setFilterType('todos'); setFilterDelivery('todos'); }} 
-            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+            style={{ padding: '6px 16px', whiteSpace: 'nowrap', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'todos' ? '#334155' : 'transparent', color: filterType === 'todos' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             Todos
           </button>
           <button 
             onClick={() => { setFilterType('venta'); setFilterDelivery('todos'); }} 
-            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+            style={{ padding: '6px 16px', whiteSpace: 'nowrap', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'venta' ? '#3b82f6' : 'transparent', color: filterType === 'venta' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             En Venta
           </button>
           <button 
             onClick={() => { setFilterType('alquiler'); setFilterDelivery('todos'); }} 
-            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+            style={{ padding: '6px 16px', whiteSpace: 'nowrap', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'alquiler' ? '#f97316' : 'transparent', color: filterType === 'alquiler' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             En Alquiler
           </button>
           <button 
             onClick={() => { setFilterType('vendido'); setFilterDelivery('todos'); }} 
-            style={{ padding: '6px 16px', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'vendido' ? '#ef4444' : 'transparent', color: filterType === 'vendido' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+            style={{ padding: '6px 16px', whiteSpace: 'nowrap', fontSize: '13px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterType === 'vendido' ? '#ef4444' : 'transparent', color: filterType === 'vendido' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
           >
             Vendido
           </button>
@@ -176,25 +176,25 @@ export default function InteractiveMap({ selectedLocal, onSelectLocal, visionMod
                   backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', padding: '6px', borderRadius: '9999px', }}>
               <button 
                 onClick={() => setFilterDelivery('todos')} 
-              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#0f172a', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', whiteSpace: 'nowrap', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === 'todos' ? '#e2e8f0' : 'transparent', color: filterDelivery === 'todos' ? '#334155' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               Cualquier Entrega
             </button>
             <button 
               onClick={() => setFilterDelivery('2026')} 
-              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2026' ? '#23AED8' : 'transparent', color: filterDelivery === '2026' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', whiteSpace: 'nowrap', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2026' ? '#23AED8' : 'transparent', color: filterDelivery === '2026' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               2026
             </button>
             <button 
               onClick={() => setFilterDelivery('2027-1')} 
-              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2027-1' ? '#22c55e' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', whiteSpace: 'nowrap', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2027-1' ? '#22c55e' : 'transparent', color: filterDelivery === '2027-1' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               2027-1
             </button>
             <button 
               onClick={() => setFilterDelivery('2027-2')} 
-              style={{ padding: '6px 16px', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2027-2' ? '#D3AA26' : 'transparent', color: filterDelivery === '2027-2' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
+              style={{ padding: '6px 16px', whiteSpace: 'nowrap', borderRadius: '9999px', border: 'none', cursor: 'pointer', fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '11px', background: filterDelivery === '2027-2' ? '#D3AA26' : 'transparent', color: filterDelivery === '2027-2' ? '#fff' : '#0f172a', transition: 'all 0.2s ease' }}
             >
               2027-2
             </button>
